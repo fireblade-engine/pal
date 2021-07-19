@@ -5,10 +5,6 @@
 [![Linux](https://github.com/fireblade-engine/pal/actions/workflows/ci-linux.yml/badge.svg)](https://github.com/fireblade-engine/pal/actions/workflows/ci-linux.yml)
 [![Windows](https://github.com/fireblade-engine/pal/actions/workflows/ci-windows.yml/badge.svg)](https://github.com/fireblade-engine/pal/actions/workflows/ci-windows.yml)
 [![WASM](https://github.com/fireblade-engine/pal/actions/workflows/ci-wasm.yml/badge.svg)](https://github.com/fireblade-engine/pal/actions/workflows/ci-wasm.yml)
-[![documentation](https://github.com/fireblade-engine/pal/workflows/Documentation/badge.svg)](https://github.com/fireblade-engine/pal/wiki)  
-[![codecov](https://codecov.io/gh/fireblade-engine/pal/branch/master/graph/badge.svg)](https://codecov.io/gh/fireblade-engine/pal)
-[![spi-swift-versions](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Ffireblade-engine%2Fpal%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/fireblade-engine/pal)
-[![spi-swift-platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Ffireblade-engine%2Fpal%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/fireblade-engine/pal)
 
 t.b.d description
 
@@ -28,10 +24,6 @@ t.b.d.
 ## 📝 Code Example
 
 t.b.d.
-
-## 📖 Documentation
-
-Consult the [wiki](https://github.com/fireblade-engine/pal/wiki) for in-depth [documentation](https://github.com/fireblade-engine/pal/wiki).
 
 
 ## 💁 How to contribute
