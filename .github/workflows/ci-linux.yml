@@ -1,0 +1,31 @@
+name: Linux
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  linux-test-build-release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        swift: ["latest"]
+    container:
+      image: swift:${{ matrix.swift }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: "Update APT"
+        shell: bash
+        run: "apt update"
+      - name: "Install curl"
+        shell: bash
+        run: "apt-get install -y curl"
+      - name: Swift version
+        run: swift --version
+      - name: Test
+        run: swift test -v --skip-update --parallel --enable-test-discovery --enable-code-coverage
+      - name: Build Release
+        run: swift build -c release
