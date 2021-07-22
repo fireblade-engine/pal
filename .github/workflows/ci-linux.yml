@@ -1,10 +1,10 @@
 name: Linux
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: workflow_dispatch
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
 
 jobs:
   linux-test-build-release:
@@ -23,6 +23,9 @@ jobs:
       - name: "Install curl"
         shell: bash
         run: "apt-get install -y curl"
+      - name: "Install system dependencies"
+        shell: bash
+        run: "apt-get install libvulkan-dev libsdl2-dev"
       - name: Swift version
         run: swift --version
       - name: Test
