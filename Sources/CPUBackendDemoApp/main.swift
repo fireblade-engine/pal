@@ -15,10 +15,9 @@ print("Platform version: \(Platform.version)")
 // either use a custom surface sub-class
 // or use the default implementation directly
 // let surface = CPUSurface()
-let window = try Window(properties: WindowProperties(title: "Title", frame: .init(0, 0, 800, 600)),
-                        surface: { try CPUWindowSurface(in: $0) })
-
-try window.setupSurface()
+let window = try Window(
+    properties: WindowProperties(title: "Title", frame: .init(0, 0, 800, 600)),
+    surface: { try CPUWindowSurface(in: $0) })
 
 guard let surface = window.surface as? CPUWindowSurface else {
     fatalError("no window surface")
