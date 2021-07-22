@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FirebladeMath",
+        "repositoryURL": "https://github.com/fireblade-engine/math.git",
+        "state": {
+          "branch": null,
+          "revision": "b6700cf9ddfe00423f789f88f2c3a79132cb2eba",
+          "version": "0.10.0"
+        }
+      },
+      {
+        "package": "SDL2",
+        "repositoryURL": "https://github.com/ctreffs/SwiftSDL2.git",
+        "state": {
+          "branch": null,
+          "revision": "886e6552f18240c2403fea2e66435e3bf82d3ef5",
+          "version": "1.2.0"
+        }
+      },
+      {
+        "package": "Vulkan",
+        "repositoryURL": "https://github.com/ctreffs/SwiftVulkan",
+        "state": {
+          "branch": null,
+          "revision": "1e5bf055439e6f90382e88242ed14f57809a5228",
+          "version": "0.1.2"
+        }
+      },
+      {
+        "package": "FirebladeTime",
+        "repositoryURL": "https://github.com/fireblade-engine/time.git",
+        "state": {
+          "branch": null,
+          "revision": "cf1bd291364f57e7583bbf49e77b7d5f8fb5927e",
+          "version": "0.1.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

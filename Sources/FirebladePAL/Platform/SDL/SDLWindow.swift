@@ -7,7 +7,7 @@
 
 #if FRB_PLATFORM_SDL
 
-import Math
+import FirebladeMath
 @_implementationOnly import SDL2
 
 typealias SDL_Window = OpaquePointer

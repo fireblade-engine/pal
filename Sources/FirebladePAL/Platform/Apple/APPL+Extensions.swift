@@ -13,7 +13,7 @@ import struct CoreGraphics.CGPoint
 import struct CoreGraphics.CGRect
 import struct CoreGraphics.CGSize
 
-import Math
+import FirebladeMath
 
 extension Rect where Value: BinaryFloatingPoint {
     init(origin: CGPoint, size: CGSize) {

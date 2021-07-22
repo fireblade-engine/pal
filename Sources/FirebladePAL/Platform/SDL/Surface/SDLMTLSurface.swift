@@ -12,7 +12,7 @@ import protocol Metal.MTLDevice
 import class QuartzCore.CAMetalLayer
 @_implementationOnly import SDL2
 
-import Math
+import FirebladeMath
 
 open class SDLMTLWindowSurface: SDLWindowSurface, MTLWindowSurfaceBase {
     private weak var _window: SDLWindow?

@@ -7,7 +7,7 @@
 
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_OPENGL
 
-import Math
+import FirebladeMath
 @_implementationOnly import SDL2
 
 public final class SDLOpenGLWindowSurface: SDLWindowSurface, OpenGLSurface {

@@ -5,7 +5,7 @@
 // Copyright © 2018-2021 Fireblade Team. All rights reserved.
 // Licensed under GNU General Public License v3.0. See LICENSE file for details.
 
-import Math
+import FirebladeMath
 
 #if FRB_PLATFORM_SDL
 public typealias Screen = SDLScreen

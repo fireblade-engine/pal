@@ -15,7 +15,7 @@ import UIKit
 #endif
 import Dispatch
 import class Foundation.NSObject
-import Math
+import FirebladeMath
 
 public typealias NativeViewController = _APPLViewController
 

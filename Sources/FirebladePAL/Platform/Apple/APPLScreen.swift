@@ -13,7 +13,7 @@ import CoreGraphics
 #elseif FRB_PLATFORM_APPL_IOS || targetEnvironment(macCatalyst)
 import UIKit
 #endif
-import Math
+import FirebladeMath
 
 final class APPLScreen: Screen {
     let native: _APPLScreen

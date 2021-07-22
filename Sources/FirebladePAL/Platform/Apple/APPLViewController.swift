@@ -13,7 +13,7 @@ import AppKit
 import UIKit
 #endif
 
-import Math
+import FirebladeMath
 
 class APPLViewController: _APPLViewController {
     let _view: APPLView

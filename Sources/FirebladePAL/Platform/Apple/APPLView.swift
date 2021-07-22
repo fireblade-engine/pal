@@ -12,7 +12,7 @@ import AppKit
 #elseif FRB_PLATFORM_APPL_IOS || targetEnvironment(macCatalyst)
 import UIKit
 #endif
-import Math
+import FirebladeMath
 
 public typealias NativeView = _APPLView
 

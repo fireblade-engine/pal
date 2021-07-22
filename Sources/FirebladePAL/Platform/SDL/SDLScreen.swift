@@ -6,7 +6,7 @@
 // Licensed under GNU General Public License v3.0. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL
-import Math
+import FirebladeMath
 @_implementationOnly import SDL2
 
 public final class SDLScreen: ScreenBase {

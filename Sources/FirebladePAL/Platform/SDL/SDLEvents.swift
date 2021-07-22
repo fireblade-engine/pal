@@ -7,9 +7,9 @@
 
 #if FRB_PLATFORM_SDL
 
-import Math
+import FirebladeMath
 @_implementationOnly import SDL2
-import Time
+import FirebladeTime
 
 final class SDLEvents: PlatformEvents {
     private var _event = SDL_Event()

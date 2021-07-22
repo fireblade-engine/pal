@@ -7,7 +7,7 @@
 
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_VULKAN
 
-import Math
+import FirebladeMath
 import Vulkan
 
 // keep this implementation only since we do NOT want to leak SDL implementation details out if the HID package
