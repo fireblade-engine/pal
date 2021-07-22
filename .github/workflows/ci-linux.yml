@@ -36,5 +36,9 @@ jobs:
         run: swift --version
       - name: Test
         run: swift test -v --skip-update --parallel --enable-test-discovery --enable-code-coverage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
       - name: Build Release
         run: swift build -c release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
