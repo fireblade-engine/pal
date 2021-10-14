@@ -64,7 +64,7 @@ let renderingAPIDefines: [SwiftSetting] = {
 
     // FRB_GRAPHICS_VULKAN
     let isVulkanDefaultEnabled: Bool
-    #if os(Linux) || os(macOS)
+    #if os(Linux)
     isVulkanDefaultEnabled = true
     #else
     isVulkanDefaultEnabled = false
