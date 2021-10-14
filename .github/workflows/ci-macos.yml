@@ -63,6 +63,7 @@ jobs:
         env:
           DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
           GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
+          FRB_ENABLE_GRAPHICS_VULKAN: 0 # disable Vulkan on macOS CI until setup is smoothed out.
 
       - name: Upload test artifacts
         if: failure()
@@ -78,6 +79,7 @@ jobs:
         env:
           DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
           GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
+          FRB_ENABLE_GRAPHICS_VULKAN: 0 # disable Vulkan on macOS CI until setup is smoothed out.
 
       - name: Upload build artifacts
         if: failure()
