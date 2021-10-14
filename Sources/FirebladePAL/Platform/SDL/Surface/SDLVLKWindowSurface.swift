@@ -89,16 +89,14 @@ open class SDLVLKWindowSurface: SDLWindowSurface, VLKWindowSurfaceBase {
         return extNames
     }
 
-    open class func createInstance() throws -> VkInstance {
-        let enabledLayerNames: [String] = {
-            #if DEBUG
-            return ["VK_LAYER_KHRONOS_validation"]
-            #else
-            return []
-            #endif
-        }()
+    open class func createInstance(layers enabledLayerNames: [String] = [],
+                                   extensions enabledExtensionNames: [String] = []) throws -> VkInstance {
+        
+        #if DEBUG
+        let enabledLayerNames = Set(enabledLayerNames) + ["VK_LAYER_KHRONOS_validation"]
+        #endif
 
-        let enabledExtensionNames: [String] = VLKWindowSurface.getRequiredInstanceExtensionNames()
+        let enabledExtensionNames = Array(Set(enabledExtensionNames).union(VLKWindowSurface.getRequiredInstanceExtensionNames()))
 
         return try enabledLayerNames.withUnsafeCStringBufferPointer { ppEnabledLayerNames in
             try enabledExtensionNames.withUnsafeCStringBufferPointer { ppEnabledExtensionNames in

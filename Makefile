@@ -1,11 +1,15 @@
 .PHONY: lint-fix
 lint-fix:
-	swiftlint autocorrect --format
+	swiftlint --fix --format
 	swiftlint lint --quiet
 
 .PHONY: test
 test:
-	swift test
+	swift test -v --skip-update --parallel --enable-test-discovery --enable-code-coverage
+
+.PHONY: build-release
+build-release:
+	swift build -c release
 
 .PHONY: brew-setup
 brew-setup:
