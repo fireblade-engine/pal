@@ -57,7 +57,6 @@ jobs:
           apt-get install -y libvulkan-dev
           apt-get install -y libvulkan1
           apt-get install -y vulkan-utils
-          apt-get install -y libsdl2-dev
 
       - name: Test
         run: make test
