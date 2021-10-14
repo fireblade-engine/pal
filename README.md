@@ -3,8 +3,6 @@
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![macOS](https://github.com/fireblade-engine/pal/actions/workflows/ci-macos.yml/badge.svg)](https://github.com/fireblade-engine/pal/actions/workflows/ci-macos.yml)
 [![Linux](https://github.com/fireblade-engine/pal/actions/workflows/ci-linux.yml/badge.svg)](https://github.com/fireblade-engine/pal/actions/workflows/ci-linux.yml)
-[![Windows](https://github.com/fireblade-engine/pal/actions/workflows/ci-windows.yml/badge.svg)](https://github.com/fireblade-engine/pal/actions/workflows/ci-windows.yml)
-[![WASM](https://github.com/fireblade-engine/pal/actions/workflows/ci-wasm.yml/badge.svg)](https://github.com/fireblade-engine/pal/actions/workflows/ci-wasm.yml)
 
 t.b.d description
 
