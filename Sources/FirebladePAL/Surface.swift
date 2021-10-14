@@ -58,8 +58,14 @@ public protocol VLKSurface: Surface {
 
     /// Create a VkInstance suitable for this surface.
     ///
-    /// Should be implemented as an `open class`.
-    static func createInstance() throws -> VkInstance
+    /// - Parameters:
+    ///   - enabledLayerNames: Names of layers to be enabled.
+    ///   - enabledExtensionNames: Names of extensions to be enabled.
+    /// - Returns: The new `VkInstance`.
+    ///
+    /// Should be implemented as an `open class` function.
+    /// Implementation should insert required layers and extensions automatically.
+    static func createInstance(layers enabledLayerNames: [String], extensions enabledExtensionNames: [String]) throws -> VkInstance
 
     static func getRequiredInstanceExtensionNames() -> [String]
 }
