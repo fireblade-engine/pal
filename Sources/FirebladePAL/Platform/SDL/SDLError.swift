@@ -43,8 +43,8 @@ extension SDLError: CustomDebugStringConvertible {
     }
 }
 
-func SDLAssert(_ condition: @autoclosure () -> Bool, _: @autoclosure () -> String = String(), file: StaticString = #file, line: UInt = #line) {
-    assert(condition(), SDLError().reason, file: file, line: line)
+func SDLAssert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = String(), file: StaticString = #file, line: UInt = #line) {
+    assert(condition(), SDLError().reason + " \(message())", file: file, line: line)
 }
 
 #endif
