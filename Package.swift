@@ -127,7 +127,9 @@ let package = Package(
         .target(
             name: "VulkanBackendDemoApp",
             dependencies: ["FirebladePAL", .vulkan],
-            swiftSettings: swiftSettings)
+            swiftSettings: swiftSettings),
+        .testTarget(name: "FirebladePALTests",
+                    dependencies: ["FirebladePAL"])
     ]
 )
 
