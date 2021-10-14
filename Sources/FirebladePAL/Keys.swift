@@ -319,7 +319,7 @@ extension KeyModifier: CustomDebugStringConvertible {
         .metaRight: "metaRight",
         .alternateGraphic: "alternateGraphic",
         .capsLock: "capsLock",
-        .numLock: "numLock",
+        .numLock: "numLock"
     ]
 
     public var debugDescription: String {

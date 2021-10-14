@@ -49,7 +49,7 @@ public enum Platform {
         #if FRB_PLATFORM_APPL
         case .apple:
             break
-            // APPLPlatform.initialize()
+        // APPLPlatform.initialize()
         #endif
         }
     }
@@ -64,7 +64,7 @@ public enum Platform {
         #if FRB_PLATFORM_APPL
         case .apple:
             break
-            // APPLPlatform.quit()
+        // APPLPlatform.quit()
         #endif
         }
     }

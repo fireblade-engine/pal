@@ -91,7 +91,7 @@ open class SDLVLKWindowSurface: SDLWindowSurface, VLKWindowSurfaceBase {
 
     open class func createInstance(layers enabledLayerNames: [String] = [],
                                    extensions enabledExtensionNames: [String] = []) throws -> VkInstance {
-        
+
         #if DEBUG
         let enabledLayerNames = Set(enabledLayerNames) + ["VK_LAYER_KHRONOS_validation"]
         #endif
@@ -128,8 +128,7 @@ open class SDLVLKWindowSurface: SDLWindowSurface, VLKWindowSurfaceBase {
 
 extension Array where Element == String {
     fileprivate init<I: FixedWidthInteger>(unsafeUninitializedCapacity count: I,
-                                           initializingWith closure: (_ buffer: UnsafeMutablePointer<UnsafePointer<CChar>?>, _ written: inout Int) throws -> Void) rethrows
-    {
+                                           initializingWith closure: (_ buffer: UnsafeMutablePointer<UnsafePointer<CChar>?>, _ written: inout Int) throws -> Void) rethrows {
         let buffer = UnsafeMutablePointer<UnsafePointer<CChar>?>.allocate(capacity: Int(count))
         defer {
             buffer.deallocate()
@@ -155,8 +154,7 @@ extension Array where Element == String {
         func translate(_ slice: inout Self.SubSequence,
                        _ offset: inout Int,
                        _ buffer: UnsafeMutableBufferPointer<UnsafePointer<CChar>?>,
-                       _ body: (UnsafeBufferPointer<UnsafePointer<CChar>?>) throws -> R) rethrows -> R
-        {
+                       _ body: (UnsafeBufferPointer<UnsafePointer<CChar>?>) throws -> R) rethrows -> R {
             guard let string = slice.popFirst() else {
                 return try body(UnsafeBufferPointer(buffer))
             }

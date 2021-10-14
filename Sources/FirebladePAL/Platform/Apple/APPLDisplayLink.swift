@@ -113,8 +113,7 @@ final class APPLDisplayLinkMacOS {
                       _: UnsafePointer<CVTimeStamp>, // A pointer to the time that the frame will be displayed.
                       _: CVOptionFlags, // Currently unused. Pass 0.
                       _: UnsafeMutablePointer<CVOptionFlags>, // Currently unused. Pass 0.
-                      _ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn
-        {
+                      _ displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn {
             guard let context = displayLinkContext else {
                 assertionFailure("Display link context not set.")
                 return kCVReturnError

@@ -30,8 +30,7 @@ final class APPLWindow: NSObject, WindowBase {
     init(manager: APPLWindowManager,
          viewController: APPLViewController,
          properties _: WindowProperties,
-         nativeWindow: _APPLWindow? = nil)
-    {
+         nativeWindow: _APPLWindow? = nil) {
         self.manager = manager
         self._viewController = viewController
         #if FRB_PLATFORM_APPL_MACOS

@@ -82,16 +82,14 @@ let renderingAPIDefines: [SwiftSetting] = {
     return swiftSettings
 }()
 
-
 let swiftSettings: [SwiftSetting] = renderingAPIDefines + platformDefines
-
 
 let package = Package(
     name: "FirebladePAL",
     platforms: [
         .macOS(.v11),
         .iOS(.v13),
-        .tvOS(.v13),
+        .tvOS(.v13)
     ],
     products: [
         .library(

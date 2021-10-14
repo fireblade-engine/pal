@@ -535,7 +535,7 @@ final class SDLEvents: PlatformEvents {
         SDLK_w: .W,
         SDLK_x: .X,
         SDLK_y: .Y,
-        SDLK_z: .Z,
+        SDLK_z: .Z
     ]
 
     private static let physicalKeyMap: [SDL_Scancode: KeyCode] = [
@@ -780,7 +780,7 @@ final class SDLEvents: PlatformEvents {
         SDL_SCANCODE_WWW: .WWW,
         SDL_SCANCODE_X: .X,
         SDL_SCANCODE_Y: .Y,
-        SDL_SCANCODE_Z: .Z,
+        SDL_SCANCODE_Z: .Z
     ]
 
     static let pointerButtonMap: [Int32: PointerButton] = [
@@ -788,7 +788,7 @@ final class SDLEvents: PlatformEvents {
         SDL_BUTTON_MIDDLE: .middle,
         SDL_BUTTON_RIGHT: .right,
         SDL_BUTTON_X1: .other(4), // extra button 1 is mouse button 4
-        SDL_BUTTON_X2: .other(5), // extra button 2 is mouse button 5
+        SDL_BUTTON_X2: .other(5) // extra button 2 is mouse button 5
     ]
 }
 
