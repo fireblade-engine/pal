@@ -105,7 +105,6 @@ let package = Package(
     ],
     dependencies: [
         .firebladeMath,
-        .firebladeTime,
         .vulkan,
         .sdl2
     ],
@@ -114,7 +113,6 @@ let package = Package(
             name: "FirebladePAL",
             dependencies: [
                 .firebladeMath,
-                .firebladeTime,
                 .sdl2,
                 .vulkan
             ],

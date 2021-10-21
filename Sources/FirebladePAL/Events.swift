@@ -6,7 +6,6 @@
 // Licensed under GNU General Public License v3.0. See LICENSE file for details.
 
 import FirebladeMath
-import FirebladeTime
 
 public enum Events {
     private static var platform: PlatformEvents = {
@@ -37,7 +36,6 @@ public enum Events {
 // MARK: - Event
 
 public struct Event {
-    public var timestamp: Nanoseconds
     public var variant: Variant
     public var window: WindowEvent
     public var keyboard: KeyboardEvent
@@ -47,8 +45,7 @@ public struct Event {
     public var textInput: TextInputEvent
     public var textEditing: TextEditingEvent
 
-    public init(timestamp: Nanoseconds = 0) {
-        self.timestamp = timestamp
+    public init() {
         variant = .none
         window = WindowEvent()
         keyboard = KeyboardEvent()

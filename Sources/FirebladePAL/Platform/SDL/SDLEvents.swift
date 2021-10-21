@@ -9,7 +9,6 @@
 
 import FirebladeMath
 @_implementationOnly import SDL2
-import FirebladeTime
 
 final class SDLEvents: PlatformEvents {
     private var _event = SDL_Event()
