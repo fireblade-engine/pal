@@ -1,9 +1,9 @@
 //
 // Events.swift
-// Fireblade Engine
+// Fireblade PAL
 //
 // Copyright © 2018-2021 Fireblade Team. All rights reserved.
-// Licensed under GNU General Public License v3.0. See LICENSE file for details.
+// Licensed under MIT License. See LICENSE file for details.
 
 import FirebladeMath
 import FirebladeTime
@@ -12,13 +12,13 @@ public enum Events {
     private static var platform: PlatformEvents = {
         switch Platform.implementation {
         #if FRB_PLATFORM_SDL
-        case .sdl:
-            return SDLEvents()
+            case .sdl:
+                return SDLEvents()
         #endif
 
         #if FRB_PLATFORM_APPL
-        case .apple:
-            return APPLEvents()
+            case .apple:
+                return APPLEvents()
         #endif
         }
     }()
@@ -60,8 +60,8 @@ public struct Event {
     }
 }
 
-extension Event {
-    public enum Variant {
+public extension Event {
+    enum Variant {
         case none
         case userQuit
         case window
@@ -164,8 +164,8 @@ public struct WindowEvent {
     }
 }
 
-extension WindowEvent {
-    public enum Event {
+public extension WindowEvent {
+    enum Event {
         /// The window manager requested that the window be closed.
         case closeRequested
 
