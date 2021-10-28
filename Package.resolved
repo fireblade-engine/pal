@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/fireblade-engine/math.git",
         "state": {
           "branch": null,
-          "revision": "b6700cf9ddfe00423f789f88f2c3a79132cb2eba",
-          "version": "0.10.0"
+          "revision": "65aa6b5045d8dd59bc8512b87ab4ec25a18dd82d",
+          "version": "0.11.0"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/ctreffs/SwiftSDL2.git",
         "state": {
           "branch": null,
-          "revision": "886e6552f18240c2403fea2e66435e3bf82d3ef5",
-          "version": "1.2.0"
+          "revision": "dc30ee99e4fb5bb4272bfed2e6336d6bc48d8aba",
+          "version": "1.3.1"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/fireblade-engine/time.git",
         "state": {
           "branch": null,
-          "revision": "cf1bd291364f57e7583bbf49e77b7d5f8fb5927e",
-          "version": "0.1.1"
+          "revision": "529c0e27108f2b22d864f61ff3e789dd938ee16c",
+          "version": "0.2.0"
         }
       }
     ]

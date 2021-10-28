@@ -132,9 +132,9 @@ let package = Package(
 )
 
 extension Package.Dependency {
-    static let firebladeMath = Package.Dependency.package(name: "FirebladeMath", url: "https://github.com/fireblade-engine/math.git", from: "0.10.0")
-    static let firebladeTime = Package.Dependency.package(name: "FirebladeTime", url: "https://github.com/fireblade-engine/time.git", from: "0.1.1")
-    static let sdl2 = Package.Dependency.package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.2.0")
+    static let firebladeMath = Package.Dependency.package(name: "FirebladeMath", url: "https://github.com/fireblade-engine/math.git", from: "0.11.0")
+    static let firebladeTime = Package.Dependency.package(name: "FirebladeTime", url: "https://github.com/fireblade-engine/time.git", from: "0.2.0")
+    static let sdl2 = Package.Dependency.package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.3.1")
     static let vulkan = Package.Dependency.package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.1.2")
 }
 
