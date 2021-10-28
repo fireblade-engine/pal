@@ -13,6 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### 📋 Prerequisites
 
 * [Swift Package Manager (SPM)](https://github.com/apple/swift-package-manager)
+* [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) for formatting
 * [Swiftlint](https://github.com/realm/SwiftLint) for linting - (optional)
 
 ### 💻 Installing
