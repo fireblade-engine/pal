@@ -1,16 +1,16 @@
 //
 // Window.swift
-// Fireblade Engine
+// Fireblade PAL
 //
 // Copyright © 2018-2021 Fireblade Team. All rights reserved.
-// Licensed under GNU General Public License v3.0. See LICENSE file for details.
+// Licensed under MIT License. See LICENSE file for details.
 
 import FirebladeMath
 
 #if FRB_PLATFORM_SDL
-public typealias Window = SDLWindow
+    public typealias Window = SDLWindow
 #elseif FRB_PLATFORM_APPL
-public typealias Window = APPLWindow
+    public typealias Window = APPLWindow
 #endif
 
 public protocol WindowBase: AnyObject {
@@ -58,6 +58,6 @@ public struct WindowProperties {
     }
 }
 
-extension Point where Value == Int {
-    public static let centerOnScreen = Point(x: -1, y: -1)
+public extension Point where Value == Int {
+    static let centerOnScreen = Point(x: -1, y: -1)
 }

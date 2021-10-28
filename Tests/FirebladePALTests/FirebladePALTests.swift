@@ -13,11 +13,11 @@ final class FirebladePALTests: XCTestCase {
         Platform.initialize()
 
         #if FRB_ENABLE_PLATFORM_SDL
-        XCTAssertEqual(Platform.implementation, .sdl)
+            XCTAssertEqual(Platform.implementation, .sdl)
         #endif
 
         #if FRB_ENABLE_PLATFORM_APPL
-        XCTAssertEqual(Platform.implementation, .apple)
+            XCTAssertEqual(Platform.implementation, .apple)
         #endif
 
         Platform.quit()
