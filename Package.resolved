@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "SwiftNFD",
+        "repositoryURL": "https://github.com/ctreffs/SwiftNFD.git",
+        "state": {
+          "branch": null,
+          "revision": "9d4173c720a2ed17f233391395ca8d2c06ae43f2",
+          "version": "1.0.1"
+        }
+      },
+      {
         "package": "SDL2",
         "repositoryURL": "https://github.com/ctreffs/SwiftSDL2.git",
         "state": {

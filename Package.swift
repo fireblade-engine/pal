@@ -1,6 +1,6 @@
+import Foundation
 // swift-tools-version:5.3
 import PackageDescription
-import Foundation
 
 enum Env: String, CaseIterable {
     /// Make SDL platform available.
@@ -111,6 +111,7 @@ let package = Package(
         .firebladeTime,
         .vulkan,
         .sdl2,
+        .nfd,
     ],
     targets: [
         .target(
@@ -120,6 +121,7 @@ let package = Package(
                 .firebladeTime,
                 .sdl2,
                 .vulkan,
+                .nfd,
             ],
             swiftSettings: swiftSettings
         ),
@@ -142,6 +144,7 @@ extension Package.Dependency {
     static let firebladeTime = Package.Dependency.package(name: "FirebladeTime", url: "https://github.com/fireblade-engine/time.git", from: "0.2.0")
     static let sdl2 = Package.Dependency.package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.3.1")
     static let vulkan = Package.Dependency.package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.1.2")
+    static let nfd = Package.Dependency.package(name: "SwiftNFD", url: "https://github.com/ctreffs/SwiftNFD.git", from: "1.0.1")
 }
 
 extension Target.Dependency {
@@ -149,6 +152,7 @@ extension Target.Dependency {
     static let firebladeMath = product(name: "FirebladeMath", package: "FirebladeMath")
     static let sdl2 = product(name: "SDL2", package: "SDL2")
     static let vulkan = product(name: "Vulkan", package: "Vulkan")
+    static let nfd = product(name: "NFD", package: "SwiftNFD")
 }
 
 extension Env {
