@@ -1,6 +1,6 @@
-import Foundation
 // swift-tools-version:5.3
 import PackageDescription
+import Foundation
 
 enum Env: String, CaseIterable {
     /// Make SDL platform available.
