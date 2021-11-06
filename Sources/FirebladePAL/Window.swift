@@ -6,6 +6,7 @@
 // Licensed under MIT License. See LICENSE file for details.
 
 import FirebladeMath
+@_implementationOnly import NFD
 
 #if FRB_PLATFORM_SDL
     public typealias Window = SDLWindow
@@ -47,6 +48,66 @@ public protocol WindowBase: AnyObject {
     func close()
     func centerOnScreen()
 }
+
+// MARK: - Dialogs
+
+public extension WindowBase {
+    /// Single file open dialog
+    /// - Parameters:
+    ///   - startPath: The current directory shown in the dialog.
+    ///   - fileExtensions: An array of filename extensions or UTIs that represent the allowed file types for the dialog.
+    /// - Returns: Selected file path or `nil` if user canceled.
+    static func openDialog(at startPath: String? = nil, filterFor fileExtensions: [String]? = nil) throws -> String? {
+        switch NFD.OpenDialog(filter: fileExtensions, defaultPath: startPath) {
+        case let .success(path):
+            return path
+        case let .failure(error):
+            throw error
+        }
+    }
+
+    /// Multiple file open dialog
+    /// - Parameters:
+    ///   - startPath: The current directory shown in the dialog.
+    ///   - fileExtensions: An array of filename extensions or UTIs that represent the allowed file types for the dialog.
+    /// - Returns: Array of selected file paths or `nil` if user canceled.
+    static func openDialogMultiple(at startPath: String? = nil, filterFor fileExtensions: [String]? = nil) throws -> [String]? {
+        switch NFD.OpenDialogMultiple(filter: fileExtensions, defaultPath: startPath) {
+        case let .success(path):
+            return path
+        case let .failure(error):
+            throw error
+        }
+    }
+
+    /// Save dialog
+    /// - Parameters:
+    ///   - startPath: The current directory shown in the dialog.
+    ///   - fileExtensions: An array of filename extensions or UTIs that represent the allowed file types for the dialog.
+    /// - Returns: Selected file path or `nil` if user canceled.
+    static func saveDialog(at startPath: String? = nil, filterFor fileExtensions: [String]? = nil) throws -> String? {
+        switch NFD.SaveDialog(filter: fileExtensions, defaultPath: startPath) {
+        case let .success(path):
+            return path
+        case let .failure(error):
+            throw error
+        }
+    }
+
+    /// Select folder dialog
+    /// - Parameter startPath: The current directory shown in the dialog.
+    /// - Returns: Selected folder path or `nil` if user canceled.
+    static func pickFolder(at startPath: String? = nil) throws -> String? {
+        switch NFD.PickFolder(defaultPath: startPath) {
+        case let .success(path):
+            return path
+        case let .failure(error):
+            throw error
+        }
+    }
+}
+
+// MARK: - Window properties
 
 public struct WindowProperties {
     public var title: String
