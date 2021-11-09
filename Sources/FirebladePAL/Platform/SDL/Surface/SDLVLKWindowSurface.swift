@@ -54,12 +54,12 @@
 
         public var enableVsync: Bool {
             get {
-                #warning("TODO: implement vsync")
-                return false
+                // TODO: implement vsync
+                false
             }
 
             set {
-                #warning("TODO: implement vsync")
+                // TODO: implement vsync
                 // <https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPresentModeKHR.html>
                 // vsync off
                 // VK_PRESENT_MODE_IMMEDIATE_KHR

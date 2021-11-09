@@ -45,7 +45,7 @@
 
             let result = SDL_GetDisplayDPI(displayIndex, &ddpi, &hdpi, &vdppi)
             SDLAssert(result == 0)
-            #warning("❗TODO: convert dpi to scale")
+            // TODO: convert dpi to scale
             return ddpi
         }
 
