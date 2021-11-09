@@ -11,3 +11,33 @@ public enum PointerButton {
 }
 
 extension PointerButton: Equatable {}
+
+extension PointerButton: RawRepresentable {
+    @_transparent
+    public var index: Int { rawValue }
+
+    @inlinable
+    public init?(rawValue: Int) {
+        switch rawValue {
+        case 0:
+            self = .left
+        case 1:
+            self = .middle
+        case 2:
+            self = .right
+        default:
+            self = .other(rawValue)
+        }
+    }
+
+    @inlinable
+    public var rawValue: Int {
+        switch self {
+        case .left: return 0
+        case .middle: return 1
+        case .right: return 2
+        case let .other(nr):
+            return nr
+        }
+    }
+}
