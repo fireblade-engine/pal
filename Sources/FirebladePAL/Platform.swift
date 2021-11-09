@@ -54,6 +54,20 @@ public enum Platform {
         }
     }
 
+    public static func getClipboardText() -> String {
+        switch implementation {
+        #if FRB_PLATFORM_SDL
+            case .sdl:
+                return try SDLPlatform.getClipboardText()
+        #endif
+
+        #if FRB_PLATFORM_APPL
+            case .apple:
+                fatalError("not implemented")
+        #endif
+        } 
+    }
+
     public static func quit() {
         switch implementation {
         #if FRB_PLATFORM_SDL
