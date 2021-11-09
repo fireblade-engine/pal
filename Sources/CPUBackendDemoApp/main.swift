@@ -35,7 +35,7 @@ while !quit {
             quit = true
 
         case .window:
-            if case let .resizedTo(newSize) = event.window.action {
+            if case .resizedTo = event.window.action {
                 try surface.handleWindowResize()
             }
 

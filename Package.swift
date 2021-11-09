@@ -1,6 +1,5 @@
 // swift-tools-version:5.3
 import PackageDescription
-import Foundation
 
 enum Env: String, CaseIterable {
     /// Make SDL platform available.
@@ -154,6 +153,8 @@ extension Target.Dependency {
     static let vulkan = product(name: "Vulkan", package: "Vulkan")
     static let nfd = product(name: "NFD", package: "SwiftNFD")
 }
+
+import Foundation
 
 extension Env {
     /// Set environment variable.
