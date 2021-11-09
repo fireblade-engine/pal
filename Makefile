@@ -8,8 +8,8 @@ clean:
 # Lint fix and format code.
 .PHONY: lint-fix
 lint-fix:
-	swiftlint --fix --quiet
-	swiftformat --quiet --swiftversion ${SWIFT_PACKAGE_VERSION} .
+	mint run swiftlint --fix --quiet
+	mint run swiftformat --quiet --swiftversion ${SWIFT_PACKAGE_VERSION} .
 
 .PHONY: pre-push
 pre-push: genLinuxTests update-fileheaders lint-fix
@@ -63,7 +63,7 @@ test:
 .PHONY: genLinuxTests
 genLinuxTests:
 	swift test --generate-linuxmain
-	swiftlint --fix --format --path Tests/
+	mint run swiftlint --fix --format --path Tests/
 
 .PHONY: update-fileheaders
 update-fileheaders:
