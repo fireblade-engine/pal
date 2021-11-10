@@ -9,9 +9,17 @@
 import XCTest
 
 final class FirebladePALTests: XCTestCase {
-    func testPlatformSetup() throws {
+    override func setUp() {
+        super.setUp()
         Platform.initialize()
+    }
 
+    override class func tearDown() {
+        super.tearDown()
+        Platform.quit()
+    }
+
+    func testPlatformSetup() throws {
         #if FRB_ENABLE_PLATFORM_SDL
             XCTAssertEqual(Platform.implementation, .sdl)
         #endif
@@ -19,7 +27,11 @@ final class FirebladePALTests: XCTestCase {
         #if FRB_ENABLE_PLATFORM_APPL
             XCTAssertEqual(Platform.implementation, .apple)
         #endif
+    }
 
-        Platform.quit()
+    func testClipboard() throws {
+        try Platform.clipboard.setText("Hello World!")
+        XCTAssertTrue(Platform.clipboard.hasText())
+        XCTAssertEqual(try Platform.clipboard.getText(), "Hello World!")
     }
 }
