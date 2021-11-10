@@ -34,16 +34,6 @@
             }
         }
 
-        static func getClipboardText() -> String {
-            if let clipboardPointer = SDL_GetClipboardText() {
-                let string = String(cString: clipboardPointer)
-                SDL_free(clipboardPointer)
-                return string
-            } else {
-                return ""
-            }
-        }
-
         static func quit() {
             SDL_QuitSubSystem(SDL_INIT_EVENTS)
             SDL_QuitSubSystem(SDL_INIT_VIDEO)
