@@ -68,4 +68,18 @@ public enum Platform {
         #endif
         }
     }
+
+    public static var clipboard: Clipboard {
+        switch implementation {
+        #if FRB_PLATFORM_SDL
+            case .sdl:
+                return SDLClipboard()
+        #endif
+
+        #if FRB_PLATFORM_APPL
+            case .apple:
+                fatalError("not implemented")
+        #endif
+        }
+    }
 }
