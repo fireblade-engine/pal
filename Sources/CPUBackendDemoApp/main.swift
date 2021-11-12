@@ -1,11 +1,9 @@
 //
 // main.swift
-// Fireblade Engine
+// Fireblade PAL
 //
-// Created by Christian Treffs on 14.04.2021.
-//
-// Copyright © 2021 Fireblade Team. All rights reserved.
-// Licensed under GNU General Public License v3.0. See LICENSE file for details.
+// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Licensed under MIT License. See LICENSE file for details.
 
 import FirebladePAL
 
@@ -17,7 +15,8 @@ print("Platform version: \(Platform.version)")
 // let surface = CPUSurface()
 let window = try Window(
     properties: WindowProperties(title: "Title", frame: .init(0, 0, 800, 600)),
-    surface: { try CPUWindowSurface(in: $0) })
+    surface: { try CPUWindowSurface(in: $0) }
+)
 
 guard let surface = window.surface as? CPUWindowSurface else {
     fatalError("no window surface")
@@ -36,7 +35,7 @@ while !quit {
             quit = true
 
         case .window:
-            if case let .resizedTo(newSize) = event.window.action {
+            if case .resizedTo = event.window.action {
                 try surface.handleWindowResize()
             }
 

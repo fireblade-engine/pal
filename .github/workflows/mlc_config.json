@@ -9,9 +9,6 @@
             "urls": [
                 "https://github.com"
             ],
-            "headers": {
-                "Authorization": "Bearer GITHUB_TOKEN"
-            }
         }
     ]
 }

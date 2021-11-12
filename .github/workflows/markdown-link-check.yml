@@ -15,9 +15,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2.3.4
 
-    - name: Inject GH token into config
-      run: sed -i 's/GITHUB_TOKEN/${{ secrets.GITHUB_TOKEN }}/g' .github/workflows/mlc_config.json
-
     - name: markdown-link-check
       uses: gaurav-nelson/github-action-markdown-link-check@1.0.13
       with:

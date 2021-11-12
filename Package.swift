@@ -1,6 +1,5 @@
 // swift-tools-version:5.3
 import PackageDescription
-import Foundation
 
 enum Env: String, CaseIterable {
     /// Make SDL platform available.
@@ -31,16 +30,16 @@ let platformDefines: [SwiftSetting] = {
     // FRB_PLATFORM_APPL
     let isApplePlatform: Bool
     #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-    isApplePlatform = false /* disabled for now */
+        isApplePlatform = false /* disabled for now */
     #else
-    isApplePlatform = false
+        isApplePlatform = false
     #endif
     if Env.get(bool: .FRB_ENABLE_PLATFORM_APPL, orElse: isApplePlatform) {
         settings.append(.define("FRB_PLATFORM_APPL"))
         #if os(macOS)
-        settings.append(.define("FRB_PLATFORM_APPL_MACOS"))
+            settings.append(.define("FRB_PLATFORM_APPL_MACOS"))
         #elseif os(iOS) || os(tvOS)
-        settings.append(.define("FRB_PLATFORM_APPL_IOS"))
+            settings.append(.define("FRB_PLATFORM_APPL_IOS"))
         #endif
     }
 
@@ -54,9 +53,9 @@ let renderingAPIDefines: [SwiftSetting] = {
     // FRB_GRAPHICS_METAL
     let isMetalDefaultEnabled: Bool
     #if canImport(Metal)
-    isMetalDefaultEnabled = true
+        isMetalDefaultEnabled = true
     #else
-    isMetalDefaultEnabled = false
+        isMetalDefaultEnabled = false
     #endif
     if Env.get(bool: .FRB_ENABLE_GRAPHICS_METAL, orElse: isMetalDefaultEnabled) {
         swiftSettings.append(.define("FRB_GRAPHICS_METAL"))
@@ -65,9 +64,9 @@ let renderingAPIDefines: [SwiftSetting] = {
     // FRB_GRAPHICS_VULKAN
     let isVulkanDefaultEnabled: Bool
     #if os(Linux) || os(macOS)
-    isVulkanDefaultEnabled = true
+        isVulkanDefaultEnabled = true
     #else
-    isVulkanDefaultEnabled = false
+        isVulkanDefaultEnabled = false
     #endif
     if Env.get(bool: .FRB_ENABLE_GRAPHICS_VULKAN, orElse: isVulkanDefaultEnabled) {
         swiftSettings.append(.define("FRB_GRAPHICS_VULKAN"))
@@ -89,25 +88,29 @@ let package = Package(
     platforms: [
         .macOS(.v11),
         .iOS(.v13),
-        .tvOS(.v13)
+        .tvOS(.v13),
     ],
     products: [
         .library(
             name: "FirebladePAL",
             type: .static,
-            targets: ["FirebladePAL"]),
+            targets: ["FirebladePAL"]
+        ),
         .executable(
             name: "CPUBackendDemoApp",
-            targets: ["CPUBackendDemoApp"]),
+            targets: ["CPUBackendDemoApp"]
+        ),
         .executable(
             name: "VulkanBackendDemoApp",
-            targets: ["VulkanBackendDemoApp"])
+            targets: ["VulkanBackendDemoApp"]
+        ),
     ],
     dependencies: [
         .firebladeMath,
         .firebladeTime,
         .vulkan,
-        .sdl2
+        .sdl2,
+        .nfd,
     ],
     targets: [
         .target(
@@ -116,26 +119,31 @@ let package = Package(
                 .firebladeMath,
                 .firebladeTime,
                 .sdl2,
-                .vulkan
+                .vulkan,
+                .nfd,
             ],
-            swiftSettings: swiftSettings),
+            swiftSettings: swiftSettings
+        ),
         .target(
             name: "CPUBackendDemoApp",
-            dependencies: ["FirebladePAL"]),
+            dependencies: ["FirebladePAL"]
+        ),
         .target(
             name: "VulkanBackendDemoApp",
             dependencies: ["FirebladePAL", .vulkan],
-            swiftSettings: swiftSettings),
+            swiftSettings: swiftSettings
+        ),
         .testTarget(name: "FirebladePALTests",
-                    dependencies: ["FirebladePAL"])
+                    dependencies: ["FirebladePAL"]),
     ]
 )
 
 extension Package.Dependency {
-    static let firebladeMath = Package.Dependency.package(name: "FirebladeMath", url: "https://github.com/fireblade-engine/math.git", from: "0.10.0")
-    static let firebladeTime = Package.Dependency.package(name: "FirebladeTime", url: "https://github.com/fireblade-engine/time.git", from: "0.1.1")
-    static let sdl2 = Package.Dependency.package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.2.0")
-    static let vulkan = Package.Dependency.package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.1.2")
+    static let firebladeMath = Package.Dependency.package(name: "FirebladeMath", url: "https://github.com/fireblade-engine/math.git", from: "0.11.0")
+    static let firebladeTime = Package.Dependency.package(name: "FirebladeTime", url: "https://github.com/fireblade-engine/time.git", from: "0.2.0")
+    static let sdl2 = Package.Dependency.package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.3.1")
+    static let vulkan = Package.Dependency.package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.0")
+    static let nfd = Package.Dependency.package(name: "SwiftNFD", url: "https://github.com/ctreffs/SwiftNFD.git", from: "1.0.2")
 }
 
 extension Target.Dependency {
@@ -143,7 +151,10 @@ extension Target.Dependency {
     static let firebladeMath = product(name: "FirebladeMath", package: "FirebladeMath")
     static let sdl2 = product(name: "SDL2", package: "SDL2")
     static let vulkan = product(name: "Vulkan", package: "Vulkan")
+    static let nfd = product(name: "NFD", package: "SwiftNFD")
 }
+
+import Foundation
 
 extension Env {
     /// Set environment variable.
@@ -216,11 +227,11 @@ extension Env {
     }
 }
 
-extension Bool {
+public extension Bool {
     /// Initialize boolean from string representations.
     /// - Parameter value: "true" or "1" result in `true`; "false" or "0" result in `false`.
     ///                    All other values return `nil`.
-    public init?(string value: String?) {
+    init?(string value: String?) {
         switch value?.lowercased() {
         case "true",
              "1":

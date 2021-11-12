@@ -1,27 +1,43 @@
 //
 // PointerButton.swift
-// Fireblade Engine
+// Fireblade PAL
 //
 // Copyright © 2018-2021 Fireblade Team. All rights reserved.
-// Licensed under GNU General Public License v3.0. See LICENSE file for details.
+// Licensed under MIT License. See LICENSE file for details.
 
-public enum PointerButton: Equatable {
+public enum PointerButton {
     case left, middle, right
     case other(_ buttonNumber: Int)
+}
 
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        switch lhs {
-        case .left:
-            return rhs == .left
-        case .middle:
-            return rhs == .middle
-        case .right:
-            return rhs == .right
-        case let .other(lhsButtonNumber):
-            if case let .other(rhsButtonNumber) = rhs {
-                return lhsButtonNumber == rhsButtonNumber
-            }
-            return false
+extension PointerButton: Equatable {}
+
+extension PointerButton: RawRepresentable {
+    @_transparent
+    public var index: Int { rawValue }
+
+    @inlinable
+    public init?(rawValue: Int) {
+        switch rawValue {
+        case 0:
+            self = .left
+        case 1:
+            self = .middle
+        case 2:
+            self = .right
+        default:
+            self = .other(rawValue)
+        }
+    }
+
+    @inlinable
+    public var rawValue: Int {
+        switch self {
+        case .left: return 0
+        case .middle: return 1
+        case .right: return 2
+        case let .other(nr):
+            return nr
         }
     }
 }

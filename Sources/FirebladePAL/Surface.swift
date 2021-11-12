@@ -1,14 +1,14 @@
 //
 // Surface.swift
-// Fireblade Engine
+// Fireblade PAL
 //
 // Copyright © 2018-2021 Fireblade Team. All rights reserved.
-// Licensed under GNU General Public License v3.0. See LICENSE file for details.
+// Licensed under MIT License. See LICENSE file for details.
 
 import FirebladeMath
 
 #if FRB_PLATFORM_SDL
-public typealias WindowSurface = SDLWindowSurface
+    public typealias WindowSurface = SDLWindowSurface
 #endif
 
 public protocol Surface: AnyObject {
@@ -31,16 +31,16 @@ public protocol WindowSurfaceBase: Surface {
 
 #if FRB_GRAPHICS_METAL
 
-import protocol Metal.MTLDevice
-import class QuartzCore.CAMetalLayer
+    import protocol Metal.MTLDevice
+    import class QuartzCore.CAMetalLayer
 
-public protocol MTLSurface: Surface {
-    var layer: CAMetalLayer? { get }
-}
+    public protocol MTLSurface: Surface {
+        var layer: CAMetalLayer? { get }
+    }
 
-public protocol MTLWindowSurfaceBase: WindowSurfaceBase, MTLSurface {
-    init(in window: Window, device: MTLDevice?) throws
-}
+    public protocol MTLWindowSurfaceBase: WindowSurfaceBase, MTLSurface {
+        init(in window: Window, device: MTLDevice?) throws
+    }
 
 #endif
 
@@ -48,46 +48,46 @@ public protocol MTLWindowSurfaceBase: WindowSurfaceBase, MTLSurface {
 
 #if FRB_GRAPHICS_VULKAN
 
-import Vulkan
+    import Vulkan
 
-public protocol VLKSurface: Surface {
-    var instance: VkInstance { get }
-    var surface: VkSurfaceKHR { get }
+    public protocol VLKSurface: Surface {
+        var instance: VkInstance { get }
+        var surface: VkSurfaceKHR { get }
 
-    static func loadLibrary(_ path: String?)
+        static func loadLibrary(_ path: String?)
 
-    /// Create a VkInstance suitable for this surface.
-    ///
-    /// - Parameters:
-    ///   - enabledLayerNames: Names of layers to be enabled.
-    ///   - enabledExtensionNames: Names of extensions to be enabled.
-    /// - Returns: The new `VkInstance`.
-    ///
-    /// Should be implemented as an `open class` function.
-    /// Implementation should insert required layers and extensions automatically.
-    static func createInstance(layers enabledLayerNames: [String], extensions enabledExtensionNames: [String]) throws -> VkInstance
+        /// Create a VkInstance suitable for this surface.
+        ///
+        /// - Parameters:
+        ///   - enabledLayerNames: Names of layers to be enabled.
+        ///   - enabledExtensionNames: Names of extensions to be enabled.
+        /// - Returns: The new `VkInstance`.
+        ///
+        /// Should be implemented as an `open class` function.
+        /// Implementation should insert required layers and extensions automatically.
+        static func createInstance(layers enabledLayerNames: [String], extensions enabledExtensionNames: [String]) throws -> VkInstance
 
-    static func getRequiredInstanceExtensionNames() -> [String]
-}
+        static func getRequiredInstanceExtensionNames() -> [String]
+    }
 
-public protocol VLKWindowSurfaceBase: WindowSurfaceBase, VLKSurface {
-    init(in window: Window, instance: VkInstance) throws
-}
+    public protocol VLKWindowSurfaceBase: WindowSurfaceBase, VLKSurface {
+        init(in window: Window, instance: VkInstance) throws
+    }
 #endif
 
 // MARK: - OpenGL Surface
 
 #if FRB_GRAPHICS_OPENGL
-public protocol OpenGLContextBase {
-    func makeCurrent()
-}
+    public protocol OpenGLContextBase {
+        func makeCurrent()
+    }
 
-public protocol OpenGLSurface: Surface {
-    associatedtype OpenGLContext: OpenGLContextBase
-    var glContext: OpenGLContext { get }
-}
+    public protocol OpenGLSurface: Surface {
+        associatedtype OpenGLContext: OpenGLContextBase
+        var glContext: OpenGLContext { get }
+    }
 
-public protocol OpenGLWindowSurfaceBase: WindowSurfaceBase, OpenGLSurface {}
+    public protocol OpenGLWindowSurfaceBase: WindowSurfaceBase, OpenGLSurface {}
 #endif
 
 // MARK: - CPU Surface

@@ -15,22 +15,8 @@ jobs:
         xcode: ["13.0"]
     if: contains( github.event.pull_request.labels.*.name, 'ci-macOS') || contains( github.event.pull_request.labels.*.name, 'ci-all')
     steps:
-      - name: Add access token to keychain
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
-        run: |
-          echo "\
-          protocol=https
-          host=github.com
-          username=Personal Access Token
-          password=$GITHUB_TOKEN" | git credential-osxkeychain store
-
       - name: Checkout
         uses: actions/checkout@v2.3.4
-        with:
-          token: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
 
       - name: Restore cached Homebrew dependencies
         uses: actions/cache@v2.1.6
@@ -62,7 +48,6 @@ jobs:
         run: make test
         env:
           DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
-          GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
           FRB_ENABLE_GRAPHICS_VULKAN: 0 # disable Vulkan on macOS CI until setup is smoothed out.
 
       - name: Upload test artifacts
@@ -78,7 +63,6 @@ jobs:
         run: make build-release
         env:
           DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
-          GITHUB_TOKEN: ${{ secrets.GH_FIREBLADE_ACCESS_TOKEN }}
           FRB_ENABLE_GRAPHICS_VULKAN: 0 # disable Vulkan on macOS CI until setup is smoothed out.
 
       - name: Upload build artifacts
