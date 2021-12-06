@@ -54,19 +54,6 @@
                     event.variant = .window
                 }
 
-            case SDL_APP_TERMINATING,
-                 SDL_APP_LOWMEMORY,
-                 SDL_APP_WILLENTERBACKGROUND,
-                 SDL_APP_DIDENTERBACKGROUND,
-                 SDL_APP_WILLENTERFOREGROUND,
-                 SDL_APP_DIDENTERFOREGROUND:
-                break
-
-            case // SDL_LOCALECHANGED,
-                // SDL_DISPLAYEVENT,
-                SDL_SYSWMEVENT:
-                break
-
             case SDL_TEXTINPUT:
                 event.variant = .textInput
                 translateTextInputEvent(from: sdlEvent.text, to: &event.textInput)
@@ -75,65 +62,8 @@
                 event.variant = .textEditing
                 translateTextEditingEvent(from: sdlEvent.edit, to: &event.textEditing)
 
-            case SDL_KEYMAPCHANGED:
-                break
-
-            case SDL_JOYAXISMOTION,
-                 SDL_JOYBALLMOTION,
-                 SDL_JOYHATMOTION,
-                 SDL_JOYBUTTONDOWN,
-                 SDL_JOYBUTTONUP,
-                 SDL_JOYDEVICEADDED,
-                 SDL_JOYDEVICEREMOVED:
-                break
-
-            case SDL_CONTROLLERAXISMOTION,
-                 SDL_CONTROLLERBUTTONDOWN,
-                 SDL_CONTROLLERBUTTONUP,
-                 SDL_CONTROLLERDEVICEADDED,
-                 SDL_CONTROLLERDEVICEREMOVED,
-                 SDL_CONTROLLERDEVICEREMAPPED:
-                // SDL_CONTROLLERTOUCHPADDOWN
-                // SDL_CONTROLLERTOUCHPADMOTION,
-                // SDL_CONTROLLERTOUCHPADUP,
-                // SDL_CONTROLLERSENSORUPDATE:
-                break
-
-            case SDL_FINGERDOWN,
-                 SDL_FINGERUP,
-                 SDL_FINGERMOTION:
-                break
-
-            case SDL_DOLLARGESTURE,
-                 SDL_DOLLARRECORD,
-                 SDL_MULTIGESTURE:
-                break
-
-            case SDL_CLIPBOARDUPDATE:
-                break
-
-            case SDL_DROPFILE,
-                 SDL_DROPTEXT,
-                 SDL_DROPBEGIN,
-                 SDL_DROPCOMPLETE:
-                break
-
-            case SDL_AUDIODEVICEADDED,
-                 SDL_AUDIODEVICEREMOVED:
-                // SDL_SENSORUPDATE:
-                break
-
-            case SDL_RENDER_TARGETS_RESET,
-                 SDL_RENDER_DEVICE_RESET:
-                break
-
-            case SDL_USEREVENT,
-                 SDL_FIRSTEVENT,
-                 SDL_LASTEVENT:
-                break
-
             default:
-                assertionFailure("Unexpected event \(event)")
+                break
             }
         }
 
