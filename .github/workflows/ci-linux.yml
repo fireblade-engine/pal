@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt update
-          apt install -y curl sqlite3 libsqlite3-dev libsdl2-dev libvulkan-dev libvulkan1 vulkan-utils
+          apt install -y curl sqlite3 libsqlite3-dev libsdl2-dev libvulkan-dev libvulkan1
 
       - name: Build Release
         run: make build-release
