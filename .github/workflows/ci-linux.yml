@@ -35,9 +35,9 @@ jobs:
             swiftpm-${{ runner.os }}-
 
       - name: Install dependencies
-        uses: ConorMacBride/install-package@v1.1.0
-        with:
-          apt: curl sqlite3 libsqlite3-dev libsdl2-dev libvulkan-dev libvulkan1 vulkan-utils
+        run: |
+          apt update
+          apt install -y curl sqlite3 libsqlite3-dev libsdl2-dev libvulkan-dev libvulkan1 vulkan-utils
 
       - name: Build Release
         run: make build-release
