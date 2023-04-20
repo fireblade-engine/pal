@@ -134,7 +134,7 @@
             defer {
                 buffer.deallocate()
             }
-            var written: Int = 0
+            var written = 0
             try closure(buffer, &written)
 
             guard written > 0 else {
@@ -171,7 +171,7 @@
             }
 
             var slice = self[...]
-            var offset: Int = 0
+            var offset = 0
             let buffer = UnsafeMutableBufferPointer<UnsafePointer<CChar>?>.allocate(capacity: count)
             defer { buffer.deallocate() }
             return try translate(&slice, &offset, buffer, body)
