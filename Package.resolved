@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/ctreffs/SwiftSDL2.git",
         "state": {
           "branch": null,
-          "revision": "dc30ee99e4fb5bb4272bfed2e6336d6bc48d8aba",
-          "version": "1.3.1"
+          "revision": "4f8f75880348c85db9289974fcbefcf3fce9d6fb",
+          "version": "1.3.2"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/ctreffs/SwiftVulkan",
         "state": {
           "branch": null,
-          "revision": "19f57234c4abbf75f94ce3e915ae679c7198eb65",
-          "version": "0.2.0"
+          "revision": "54af73ca33e493ccfadf02e6f00281be07b8a850",
+          "version": "0.2.1"
         }
       },
       {
