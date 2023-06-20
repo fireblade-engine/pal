@@ -138,9 +138,7 @@
         }
 
         public var screen: Screen? {
-            let displayIndex = SDL_GetWindowDisplayIndex(_window)
-            SDLAssert(displayIndex == 0)
-            return SDLScreen(displayIndex: displayIndex)
+            SDLScreen(displayIndex: SDL_GetWindowDisplayIndex(_window))
         }
 
         public func close() {
