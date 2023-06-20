@@ -7,7 +7,7 @@
 
 #if FRB_PLATFORM_APPL
 
-    #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+#if canImport(AppKit)
         import class AppKit.NSApplication
         import protocol AppKit.NSApplicationDelegate
         import class AppKit.NSEvent
@@ -26,7 +26,7 @@
         public typealias _APPLViewController = NSViewController
         public typealias _APPLView = NSView
 
-    #elseif FRB_PLATFORM_APPL_IOS || targetEnvironment(macCatalyst)
+#elseif canImport(UIKit)
 
         // MARK: - UIKit
 

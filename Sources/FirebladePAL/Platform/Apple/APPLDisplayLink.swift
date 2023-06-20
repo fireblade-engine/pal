@@ -5,6 +5,7 @@
 // Copyright © 2018-2021 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
+/*
 #if FRB_PLATFORM_APPL
 
     import class Dispatch.DispatchQueue
@@ -35,7 +36,7 @@
             init(delegate: APPLDisplayLinkDelegate, targetQueue: DispatchQueue?) {
                 self.delegate = delegate
 
-                dispatchSource = DispatchSource.makeUserDataAddSource(vkQueue: targetQueue)
+                dispatchSource = DispatchSource.makeUserDataAddSource(queue: targetQueue)
 
                 dispatchSource.setEventHandler { [weak self] in
                     autoreleasepool { [weak self] in
@@ -188,3 +189,4 @@
     #endif
 
 #endif
+*/

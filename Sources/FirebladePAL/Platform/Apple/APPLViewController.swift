@@ -7,9 +7,11 @@
 
 #if FRB_PLATFORM_APPL
 
-    #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+    #if canImport(AppKit)
         import AppKit
-    #elseif FRB_PLATFORM_APPL_IOS || targetEnvironment(macCatalyst)
+    #endif
+
+    #if canImport(UIKit)
         import UIKit
     #endif
 

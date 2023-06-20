@@ -7,15 +7,19 @@
 
 #if FRB_PLATFORM_APPL
 
-    #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
-        import AppKit
-        import CoreGraphics
-    #elseif FRB_PLATFORM_APPL_IOS || targetEnvironment(macCatalyst)
-        import UIKit
-    #endif
-    import FirebladeMath
+#if canImport(AppKit)
+import AppKit
+#endif
 
-    final class APPLScreen: Screen {
+#if canImport(UIKit)
+import UIKit
+#endif
+import CoreGraphics
+import FirebladeMath
+
+public final class APPLScreen: ScreenBase {
+
+    
         let native: _APPLScreen
 
         init?(_ native: _APPLScreen?) {
@@ -25,16 +29,24 @@
             self.native = screen
         }
 
-        static var main: Screen? {
-            APPLScreen(_APPLScreen.main)
+    public static var main: Screen {
+            APPLScreen(_APPLScreen.main)!
         }
 
-        static var screens: [Screen] {
+    public static var screens: [Screen] {
             _APPLScreen.screens.compactMap(APPLScreen.init)
         }
 
-        var frame: Rect<Int> {
-            #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+    public var name: String? {
+        #if os(macOS)
+        return native.localizedName
+        #else
+        return nil
+        #endif
+    }
+
+    public var frame: Rect<Int> {
+            #if os(macOS)
                 // The dimensions and location of the screen.
                 // The current location and dimensions of the visible screen.
                 Rect(Int(native.frame.origin.x),
@@ -44,12 +56,15 @@
             #else
                 // bounds - // Bounds of entire screen in points - The bounding rectangle of the screen, measured in points.
                 // nativeBounds - Native bounds of the physical screen in pixels - The bounding rectangle of the physical screen, measured in pixels.
-                Rect(rect: native.bounds)
+                return Rect(Int(native.bounds.origin.x),
+                     Int(native.bounds.origin.y),
+                     Int(native.bounds.size.width),
+                     Int(native.bounds.size.height))
             #endif
         }
 
         var scale: Float {
-            #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+            #if os(macOS)
                 // The backing store pixel scale factor for the screen.
                 return Float(native.backingScaleFactor)
             #else
@@ -64,9 +79,9 @@
             _APPLScreen.main === native
         }
 
-        #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+        #if os(macOS)
             private var displayID: CGDirectDisplayID? {
-                #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+                #if os(macOS) && !targetEnvironment(macCatalyst)
                     return native.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID
                 #else
                     return nil
@@ -82,16 +97,16 @@
             }
         #endif
 
-        var screenID: Int? {
-            #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+    public var screenID: Int? {
+            #if os(macOS)
                 return displayID.map(Int.init)
             #else
                 return nil
             #endif
         }
 
-        var refreshRate: Int? {
-            #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
+    public var refreshRate: Int? {
+            #if os(macOS)
                 guard let displayMode = displayMode else {
                     return nil
                 }
