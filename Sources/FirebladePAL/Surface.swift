@@ -39,7 +39,7 @@ public protocol WindowSurfaceBase: Surface {
     import class QuartzCore.CAMetalLayer
 
     public protocol MTLSurface: Surface {
-        var layer: CAMetalLayer? { get }
+        var mtlLayer: CAMetalLayer? { get }
     }
 
     public protocol MTLWindowSurfaceBase: WindowSurfaceBase, MTLSurface {

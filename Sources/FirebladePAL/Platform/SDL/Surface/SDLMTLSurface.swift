@@ -23,13 +23,23 @@
             private var mtlView: SDL_MetalView!
         #endif
 
-        public var layer: CAMetalLayer?
+        public var mtlLayer: CAMetalLayer?
 
         public static var sdlFlags: UInt32 = SDL_WINDOW_METAL.rawValue
 
         public var enableVsync: Bool {
-            get { layer?.displaySyncEnabled ?? false }
-            set { layer?.displaySyncEnabled = newValue }
+            get {
+                #if os(macOS)
+                    mtlLayer?.displaySyncEnabled ?? false
+                #else
+                    false
+                #endif
+            }
+            set {
+                #if os(macOS)
+                    mtlLayer?.displaySyncEnabled = newValue
+                #endif
+            }
         }
 
         public required init(in window: SDLWindow, device: MTLDevice?) throws {
@@ -41,7 +51,7 @@
             let mtlLayer = unsafeBitCast(SDL_Metal_GetLayer(mtlView), to: CAMetalLayer.self)
 
             self._window = window
-            self.layer = mtlLayer
+            self.mtlLayer = mtlLayer
             if let device {
                 mtlLayer.device = device
             }
@@ -58,7 +68,7 @@
         public func destroy() {
             SDL_Metal_DestroyView(mtlView)
             mtlView = nil
-            self.layer = nil
+            self.mtlLayer = nil
             self._window = nil
         }
 

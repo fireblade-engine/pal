@@ -37,6 +37,10 @@ public protocol WindowBase: AnyObject {
     var title: String? { get set }
     var frame: Rect<Int> { get set }
 
+    var position: Point<Int> { get set }
+    var size: Size<Int> { get set }
+    var sizeInPixels: Size<Int> { get }
+
     var fullscreen: Bool { get set }
 
     var screen: Screen? { get }
