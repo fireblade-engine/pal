@@ -7,7 +7,7 @@
 
 #if FRB_PLATFORM_SDL
     import FirebladeMath
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     public final class SDLScreen: ScreenBase {
         let displayIndex: Int32

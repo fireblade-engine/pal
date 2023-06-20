@@ -9,7 +9,9 @@ import FirebladeMath
 
 #if FRB_PLATFORM_SDL
     public typealias Screen = SDLScreen
-#elseif FRB_PLATFORM_APPL
+#endif
+
+#if FRB_PLATFORM_APPL
     public typealias Screen = APPLScreen
 #endif
 

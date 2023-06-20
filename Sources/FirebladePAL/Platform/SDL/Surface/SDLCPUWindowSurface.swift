@@ -9,7 +9,7 @@
 
     import FirebladeMath
 
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     public final class SDLCPUWindowSurface: SDLWindowSurface, CPUWindowSurfaceBase {
         private typealias SDLSurfacePointer = UnsafeMutablePointer<SDL_Surface>

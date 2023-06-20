@@ -13,7 +13,7 @@
 
     public typealias CPUWindowSurface = SDLCPUWindowSurface
 
-    #if FRB_GRAPHICS_VULKAN
+    #if canImport(Vulkan)
         public typealias VLKWindowSurface = SDLVLKWindowSurface
     #endif
 

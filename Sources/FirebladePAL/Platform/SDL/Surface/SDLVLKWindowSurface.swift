@@ -5,14 +5,13 @@
 // Copyright © 2018-2021 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
-#if FRB_PLATFORM_SDL && FRB_GRAPHICS_VULKAN
+#if FRB_PLATFORM_SDL
+#if canImport(Vulkan)
 
-    import FirebladeMath
-    import Vulkan
+@_implementationOnly import SDL
+import FirebladeMath
+import Vulkan
 
-    // keep this implementation only since we do NOT want to leak SDL implementation details out if the HID package
-    @_implementationOnly import SDL2
-    import Vulkan
 
     open class SDLVLKWindowSurface: SDLWindowSurface, VLKWindowSurfaceBase {
         public enum Error: Swift.Error {
@@ -178,4 +177,5 @@
         }
     }
 
+#endif
 #endif

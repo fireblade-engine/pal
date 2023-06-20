@@ -8,7 +8,7 @@
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_OPENGL
 
     import FirebladeMath
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     public final class SDLOpenGLWindowSurface: SDLWindowSurface, OpenGLSurface {
         private weak var window: SDLWindow?

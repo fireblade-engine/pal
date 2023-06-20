@@ -10,7 +10,7 @@
     import func Metal.MTLCreateSystemDefaultDevice
     import protocol Metal.MTLDevice
     import class QuartzCore.CAMetalLayer
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     import FirebladeMath
 

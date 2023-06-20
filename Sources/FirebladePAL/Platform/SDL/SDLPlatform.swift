@@ -7,7 +7,7 @@
 
 #if FRB_PLATFORM_SDL
 
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     enum SDLPlatform: PlatformInitialization {
         static func initialize() {

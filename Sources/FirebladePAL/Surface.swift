@@ -11,6 +11,10 @@ import FirebladeMath
     public typealias WindowSurface = SDLWindowSurface
 #endif
 
+#if FRB_PLATFORM_APPL
+    public typealias WindowSurface = APPLWindowSurface
+#endif
+
 public protocol Surface: AnyObject {
     func destroy()
 
@@ -46,7 +50,7 @@ public protocol WindowSurfaceBase: Surface {
 
 // MARK: - Vulkan Surface
 
-#if FRB_GRAPHICS_VULKAN
+#if canImport(Vulkan)
 
     import Vulkan
 

@@ -9,7 +9,7 @@
 
     import FirebladeMath
     import FirebladeTime
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     final class SDLEvents: PlatformEvents {
         private var _event = SDL_Event()
@@ -129,12 +129,68 @@
             event.windowID = Int(sdlEvent.windowID)
 
             switch SDL_WindowEventID(UInt32(sdlEvent.event)) {
+            case SDL_WINDOWEVENT_SHOWN:
+                event.action = .shown
+                return true
+            case SDL_WINDOWEVENT_HIDDEN:
+                event.action = .hidden
+                return true
+
+            case SDL_WINDOWEVENT_EXPOSED:
+                event.action = .needsRedraw
+                return true
+
+            case SDL_WINDOWEVENT_MOVED:
+                event.action = .movedTo(position: .init(Int(sdlEvent.data1), Int(sdlEvent.data2)))
+                return true
+
             case SDL_WINDOWEVENT_RESIZED:
                 event.action = .resizedTo(size: .init(width: Int(sdlEvent.data1), height: Int(sdlEvent.data1)))
                 return true
 
+            case SDL_WINDOWEVENT_SIZE_CHANGED:
+                event.action = .sizeChangedTo(size: .init(width: Int(sdlEvent.data1), height: Int(sdlEvent.data1)))
+                return true
+
+            case SDL_WINDOWEVENT_MINIMIZED:
+                event.action = .minimized
+                return true
+
+            case SDL_WINDOWEVENT_MAXIMIZED:
+                event.action = .maximized
+                return true
+
+            case SDL_WINDOWEVENT_RESTORED:
+                event.action = .restored
+                return true
+
+            case SDL_WINDOWEVENT_ENTER:
+                event.action = .pointerFocusGained
+                return true
+
+            case SDL_WINDOWEVENT_LEAVE:
+                event.action = .pointerFocusLost
+                return true
+
+            case SDL_WINDOWEVENT_FOCUS_GAINED:
+                event.action = .keyboardFocusGained
+                return true
+
+            case SDL_WINDOWEVENT_FOCUS_LOST:
+                event.action = .keyboardFocusLost
+                return true
+
             case SDL_WINDOWEVENT_CLOSE:
                 event.action = .closeRequested
+                return true
+
+            case SDL_WINDOWEVENT_TAKE_FOCUS:
+                event.action = .takeInputFocus
+                return true
+
+            case SDL_WINDOWEVENT_DISPLAY_CHANGED:
+                let screen = Screen(displayIndex: sdlEvent.data1)
+                event.action = .screenChangedTo(screen: screen)
                 return true
 
             default:

@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7
 import PackageDescription
 
 enum Env: String, CaseIterable {
@@ -17,6 +17,9 @@ enum Env: String, CaseIterable {
     /// Make OpenGL graphics API available.
     case FRB_ENABLE_GRAPHICS_OPENGL
 }
+
+let platformsMetal: [Platform] = [.macOS, .iOS, .tvOS]
+let platformsVulkan: [Platform] = [.windows, .linux]
 
 /// Defines for available platform abstractions
 let platformDefines: [SwiftSetting] = {
@@ -100,51 +103,53 @@ let package = Package(
             name: "CPUBackendDemoApp",
             targets: ["CPUBackendDemoApp"]
         ),
-        .executable(
+        /*.executable(
             name: "VulkanBackendDemoApp",
             targets: ["VulkanBackendDemoApp"]
-        ),
+        ),*/
     ],
     dependencies: [
-        .package(name: "FirebladeMath", url: "https://github.com/fireblade-engine/math.git", from: "0.13.0"),
-        .package(name: "FirebladeTime", url: "https://github.com/fireblade-engine/time.git", from: "0.2.0"),
-        .package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.3.2"),
-        .package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.1"),
-        .package(name: "SwiftNFD", url: "https://github.com/ctreffs/SwiftNFD.git", from: "1.0.2"),
+        .package(url: "https://github.com/fireblade-engine/math.git", from: "0.13.0"),
+        .package(url: "https://github.com/fireblade-engine/time.git", from: "0.2.0"),
+        .package(url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.4.0"),
+        .package(url: "https://github.com/ctreffs/SwiftNFD.git", from: "1.0.2"),
+        //.package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.1"),
     ],
     targets: [
         .target(
             name: "FirebladePAL",
             dependencies: [
-                .firebladeMath,
-                .firebladeTime,
-                .sdl2,
-                .vulkan,
-                .nfd,
+                .product(name: "FirebladeMath", package: "math"),
+                .product(name: "FirebladeTime", package: "time"),
+                .product(name: "SDL", package: "SwiftSDL2"),
+                //.product(name: "Vulkan", package: "Vulkan", condition: .when(platforms: platformsVulkan)),
+                .product(name: "NFD", package: "SwiftNFD"),
             ],
-            swiftSettings: swiftSettings
+            swiftSettings: swiftSettings,
+            linkerSettings: [
+                // .linkedLibrary("Vulkan", .when(platforms: platformsVulkan)),
+                .linkedFramework("Metal", .when(platforms: platformsMetal))
+            ]
         ),
-        .target(
+        .executableTarget(
             name: "CPUBackendDemoApp",
-            dependencies: ["FirebladePAL"]
+            dependencies: ["FirebladePAL"],
+            path: "Demos/CPUBackendDemoApp"
         ),
-        .target(
+        .executableTarget(
+            name: "AppleDemoApp",
+            dependencies: ["FirebladePAL"],
+            path: "Demos/AppleDemoApp"
+        ),
+        /*.target(
             name: "VulkanBackendDemoApp",
             dependencies: ["FirebladePAL", .vulkan],
             swiftSettings: swiftSettings
-        ),
+        ),*/
         .testTarget(name: "FirebladePALTests",
                     dependencies: ["FirebladePAL"]),
     ]
 )
-
-extension Target.Dependency {
-    static let firebladeTime = byName(name: "FirebladeTime")
-    static let firebladeMath = product(name: "FirebladeMath", package: "FirebladeMath")
-    static let sdl2 = product(name: "SDL2", package: "SDL2")
-    static let vulkan = product(name: "Vulkan", package: "Vulkan")
-    static let nfd = product(name: "NFD", package: "SwiftNFD")
-}
 
 import Foundation
 

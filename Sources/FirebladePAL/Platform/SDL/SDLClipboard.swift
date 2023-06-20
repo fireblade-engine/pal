@@ -7,7 +7,7 @@
 
 #if FRB_PLATFORM_SDL
 
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     public struct SDLClipboard: Clipboard {
         init() {}
