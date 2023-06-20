@@ -2,7 +2,7 @@
 // SDLOpenGLWindowSurface.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_OPENGL
@@ -39,7 +39,7 @@
         }
 
         public func getDrawableSize() -> Size<Int> {
-            guard let window = window else {
+            guard let window else {
                 return Size(0, 0)
             }
 
@@ -50,7 +50,7 @@
         }
 
         public func swap() {
-            guard let window = window else {
+            guard let window else {
                 return
             }
             SDL_GL_SwapWindow(window._window)

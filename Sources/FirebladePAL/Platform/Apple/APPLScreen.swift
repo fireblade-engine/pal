@@ -2,24 +2,22 @@
 // APPLScreen.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_APPL
 
-#if canImport(AppKit)
-import AppKit
-#endif
+    #if canImport(AppKit)
+        import AppKit
+    #endif
 
-#if canImport(UIKit)
-import UIKit
-#endif
-import CoreGraphics
-import FirebladeMath
+    #if canImport(UIKit)
+        import UIKit
+    #endif
+    import CoreGraphics
+    import FirebladeMath
 
-public final class APPLScreen: ScreenBase {
-
-    
+    public final class APPLScreen: ScreenBase {
         let native: _APPLScreen
 
         init?(_ native: _APPLScreen?) {
@@ -29,23 +27,23 @@ public final class APPLScreen: ScreenBase {
             self.native = screen
         }
 
-    public static var main: Screen {
+        public static var main: Screen {
             APPLScreen(_APPLScreen.main)!
         }
 
-    public static var screens: [Screen] {
+        public static var screens: [Screen] {
             _APPLScreen.screens.compactMap(APPLScreen.init)
         }
 
-    public var name: String? {
-        #if os(macOS)
-        return native.localizedName
-        #else
-        return nil
-        #endif
-    }
+        public var name: String? {
+            #if os(macOS)
+                return native.localizedName
+            #else
+                return nil
+            #endif
+        }
 
-    public var frame: Rect<Int> {
+        public var frame: Rect<Int> {
             #if os(macOS)
                 // The dimensions and location of the screen.
                 // The current location and dimensions of the visible screen.
@@ -57,9 +55,9 @@ public final class APPLScreen: ScreenBase {
                 // bounds - // Bounds of entire screen in points - The bounding rectangle of the screen, measured in points.
                 // nativeBounds - Native bounds of the physical screen in pixels - The bounding rectangle of the physical screen, measured in pixels.
                 return Rect(Int(native.bounds.origin.x),
-                     Int(native.bounds.origin.y),
-                     Int(native.bounds.size.width),
-                     Int(native.bounds.size.height))
+                            Int(native.bounds.origin.y),
+                            Int(native.bounds.size.width),
+                            Int(native.bounds.size.height))
             #endif
         }
 
@@ -89,7 +87,7 @@ public final class APPLScreen: ScreenBase {
             }
 
             private var displayMode: CGDisplayMode? {
-                guard let displayID = displayID else {
+                guard let displayID else {
                     return nil
                 }
 
@@ -97,7 +95,7 @@ public final class APPLScreen: ScreenBase {
             }
         #endif
 
-    public var screenID: Int? {
+        public var screenID: Int? {
             #if os(macOS)
                 return displayID.map(Int.init)
             #else
@@ -105,9 +103,9 @@ public final class APPLScreen: ScreenBase {
             #endif
         }
 
-    public var refreshRate: Int? {
+        public var refreshRate: Int? {
             #if os(macOS)
-                guard let displayMode = displayMode else {
+                guard let displayMode else {
                     return nil
                 }
                 return Int(displayMode.refreshRate.rounded(.toNearestOrEven))

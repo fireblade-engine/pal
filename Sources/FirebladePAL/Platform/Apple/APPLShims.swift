@@ -2,12 +2,12 @@
 // APPLShims.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_APPL
 
-#if canImport(AppKit)
+    #if canImport(AppKit)
         import class AppKit.NSApplication
         import protocol AppKit.NSApplicationDelegate
         import class AppKit.NSEvent
@@ -26,7 +26,7 @@
         public typealias _APPLViewController = NSViewController
         public typealias _APPLView = NSView
 
-#elseif canImport(UIKit)
+    #elseif canImport(UIKit)
 
         // MARK: - UIKit
 

@@ -3,7 +3,6 @@ import Metal
 
 @main
 final class DemoApp: App {
-
     var windows: [Window] = []
 
     override func appDidLaunch() {
@@ -20,8 +19,8 @@ final class DemoApp: App {
         let window2 = Window.create(with: desc)
         windows.append(window2)
 
-        //let surface: MTLWindowSurface = MTLWindowSurface(device: MTLCreateSystemDefaultDevice())
-        //window.surface = surface
+        // let surface: MTLWindowSurface = MTLWindowSurface(device: MTLCreateSystemDefaultDevice())
+        // window.surface = surface
 
         while true {
             Events.pumpEvents()
@@ -36,7 +35,6 @@ final class DemoApp: App {
             handleEvent(window: event.window)
         default:
             break
-
         }
     }
 
@@ -59,7 +57,6 @@ final class DemoApp: App {
             window.fullscreen.toggle()
         default:
             break
-
         }
     }
 

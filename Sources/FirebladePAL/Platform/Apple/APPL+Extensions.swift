@@ -2,7 +2,7 @@
 // APPL+Extensions.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_APPL
@@ -41,21 +41,21 @@
         }
 
         extension CGRect {
-            init<V>(rect: Rect<V>) where V: BinaryFloatingPoint {
+            init(rect: Rect<some BinaryFloatingPoint>) {
                 self.init(origin: CGPoint(point: rect.origin),
                           size: CGSize(size: rect.size))
             }
         }
 
         extension CGSize {
-            init<V>(size: Size<V>) where V: BinaryFloatingPoint {
+            init(size: Size<some BinaryFloatingPoint>) {
                 self.init(width: CGFloat(size.width),
                           height: CGFloat(size.height))
             }
         }
 
         extension CGPoint {
-            init<V>(point: Point<V>) where V: BinaryFloatingPoint {
+            init(point: Point<some BinaryFloatingPoint>) {
                 self.init(x: CGFloat(point.x),
                           y: CGFloat(point.y))
             }

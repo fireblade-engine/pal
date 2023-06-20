@@ -103,17 +103,17 @@ let package = Package(
             name: "CPUBackendDemoApp",
             targets: ["CPUBackendDemoApp"]
         ),
-        /*.executable(
-            name: "VulkanBackendDemoApp",
-            targets: ["VulkanBackendDemoApp"]
-        ),*/
+        /* .executable(
+                name: "VulkanBackendDemoApp",
+                targets: ["VulkanBackendDemoApp"]
+            ), */
     ],
     dependencies: [
         .package(url: "https://github.com/fireblade-engine/math.git", from: "0.13.0"),
         .package(url: "https://github.com/fireblade-engine/time.git", from: "0.2.0"),
         .package(url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.4.0"),
         .package(url: "https://github.com/ctreffs/SwiftNFD.git", from: "1.0.2"),
-        //.package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.1"),
+        // .package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.1"),
     ],
     targets: [
         .target(
@@ -122,13 +122,13 @@ let package = Package(
                 .product(name: "FirebladeMath", package: "math"),
                 .product(name: "FirebladeTime", package: "time"),
                 .product(name: "SDL", package: "SwiftSDL2"),
-                //.product(name: "Vulkan", package: "Vulkan", condition: .when(platforms: platformsVulkan)),
+                // .product(name: "Vulkan", package: "Vulkan", condition: .when(platforms: platformsVulkan)),
                 .product(name: "NFD", package: "SwiftNFD"),
             ],
             swiftSettings: swiftSettings,
             linkerSettings: [
                 // .linkedLibrary("Vulkan", .when(platforms: platformsVulkan)),
-                .linkedFramework("Metal", .when(platforms: platformsMetal))
+                .linkedFramework("Metal", .when(platforms: platformsMetal)),
             ]
         ),
         .executableTarget(
@@ -141,11 +141,11 @@ let package = Package(
             dependencies: ["FirebladePAL"],
             path: "Demos/AppleDemoApp"
         ),
-        /*.target(
-            name: "VulkanBackendDemoApp",
-            dependencies: ["FirebladePAL", .vulkan],
-            swiftSettings: swiftSettings
-        ),*/
+        /* .target(
+                name: "VulkanBackendDemoApp",
+                dependencies: ["FirebladePAL", .vulkan],
+                swiftSettings: swiftSettings
+            ), */
         .testTarget(name: "FirebladePALTests",
                     dependencies: ["FirebladePAL"]),
     ]
@@ -161,7 +161,7 @@ extension Env {
     ///   - override: Override existing variable, true/false.
     /// - Returns: True if set, false otherwise.
     @discardableResult
-    static func set<S>(variable varName: Env, to value: S, override: Bool = true) -> Bool where S: CustomStringConvertible {
+    static func set(variable varName: Env, to value: some CustomStringConvertible, override: Bool = true) -> Bool {
         setenv(varName.rawValue, value.description, override ? 1 : 0) == 0
     }
 

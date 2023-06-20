@@ -47,4 +47,3 @@ while !quit {
 }
 
 Platform.quit()
-

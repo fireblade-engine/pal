@@ -1,17 +1,15 @@
 //
-//  File.swift
+// APPLWindowSurface.swift
+// Fireblade PAL
 //
-//
-//  Created by Christian Treffs on 12.06.23.
-//
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
+// Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_APPL
-public protocol APPLWindowSurface: WindowSurfaceBase { }
+    public protocol APPLWindowSurface: WindowSurfaceBase {}
 
-#if FRB_GRAPHICS_METAL
-public typealias MTLWindowSurface = APPLMTLWindowSurface
+    #if FRB_GRAPHICS_METAL
+        public typealias MTLWindowSurface = APPLMTLWindowSurface
+    #endif
+
 #endif
-
-#endif
-
-

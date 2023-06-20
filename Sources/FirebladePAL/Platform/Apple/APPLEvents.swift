@@ -2,14 +2,14 @@
 // APPLEvents.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_APPL
 
-#if canImport(AppKit)
-import AppKit
-#endif
+    #if canImport(AppKit)
+        import AppKit
+    #endif
 
     struct APPLEvents: PlatformEvents {
         func pushEvent(_: Event) {
@@ -29,7 +29,7 @@ import AppKit
 
         // https://github.com/libsdl-org/SDL/blob/dec0dbff13d4091035209016eb2d0dd82c9aba58/src/video/cocoa/SDL_cocoaevents.m#LL527C5-L527C30
         private func appKitPumpEvents(until expiration: Date?) {
-            while (true) {
+            while true {
                 guard let event = NSApp.nextEvent(matching: .any, until: expiration, inMode: .default, dequeue: true) else {
                     return
                 }
@@ -49,44 +49,36 @@ import AppKit
             return false
         }
 
-
         private static func translate(from nsEvent: NSEvent, to event: inout Event) {
             event.variant = .none
             switch nsEvent.type {
             case .keyDown,
-                    .keyUp,
-                    .flagsChanged:
+                 .keyUp,
+                 .flagsChanged:
                 event.variant = .keyboard
                 translateKeyboardEvent(from: nsEvent, to: &event.keyboard)
 
             case .leftMouseDown,
-                    .leftMouseUp,
-                    .rightMouseDown,
-                    .rightMouseUp,
-                    .mouseMoved,
-                    .leftMouseDragged,
-                    .rightMouseDragged,
-                    .otherMouseDown,
-                    .otherMouseUp,
-                    .otherMouseDragged,
-                    .scrollWheel:
+                 .leftMouseUp,
+                 .rightMouseDown,
+                 .rightMouseUp,
+                 .mouseMoved,
+                 .leftMouseDragged,
+                 .rightMouseDragged,
+                 .otherMouseDown,
+                 .otherMouseUp,
+                 .otherMouseDragged,
+                 .scrollWheel:
                 break
 
             default:
                 break
-
             }
-
         }
 
-        private static func translateKeyboardEvent(from nsEvent: NSEvent, to event: inout KeyboardEvent) {
-
+        private static func translateKeyboardEvent(from nsEvent: NSEvent, to _: inout KeyboardEvent) {
             print(nsEvent)
-
         }
-
-
-
     }
 
 #endif

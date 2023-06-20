@@ -1,8 +1,14 @@
+//
+// App.swift
+// Fireblade PAL
+//
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
+// Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL
-public typealias App = AnyObject
+    public typealias App = AnyObject
 #elseif FRB_PLATFORM_APPL
-public typealias App = APPLApp
+    public typealias App = APPLApp
 #endif
 
 public protocol AppBase {
@@ -13,55 +19,53 @@ public protocol AppBase {
 }
 
 /*
-// MARK: - public
-extension App {
+ // MARK: - public
+ extension App {
 
-    public static func create() -> Self {
-        
-    }
+     public static func create() -> Self {
 
-    public static func main() throws {
-        Platform.initialize()
-        let app = Self.create()
-        app.appDidLaunch()
-        app.appEventLoop()
-        app.appWillShutDown()
+     }
 
-        Platform.quit()
-    }
+     public static func main() throws {
+         Platform.initialize()
+         let app = Self.create()
+         app.appDidLaunch()
+         app.appEventLoop()
+         app.appWillShutDown()
 
-    public func appDidLaunch() {
-        /* app did launch */
-    }
+         Platform.quit()
+     }
 
-    public func appEventLoop() {
-        var event = Event()
-        var quitApp = false
+     public func appDidLaunch() {
+         /* app did launch */
+     }
 
-        while !quitApp {
-            Events.pumpEvents()
+     public func appEventLoop() {
+         var event = Event()
+         var quitApp = false
 
-            while Events.pollEvent(&event) {
-                switch event.variant {
-                case .userQuit:
-                    appOnEvent(event: event)
-                    quitApp = true
-                default:
-                    appOnEvent(event: event)
-                }
-            }
-        }
+         while !quitApp {
+             Events.pumpEvents()
 
-    }
+             while Events.pollEvent(&event) {
+                 switch event.variant {
+                 case .userQuit:
+                     appOnEvent(event: event)
+                     quitApp = true
+                 default:
+                     appOnEvent(event: event)
+                 }
+             }
+         }
 
-    public func appWillShutDown() {
-        /* app will shutdown */
-    }
+     }
 
+     public func appWillShutDown() {
+         /* app will shutdown */
+     }
 
-}
- */
-
+ }
+  */
 
 public protocol AppContext {
     var isRunning: Bool { get set }
@@ -70,4 +74,3 @@ public protocol AppContext {
 public class DefaultAppContext: AppContext {
     public var isRunning: Bool = false
 }
-
