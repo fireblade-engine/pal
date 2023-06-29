@@ -19,7 +19,8 @@
 
         private var mtlView: SDL_MetalView!
 
-        public var layer: CAMetalLayer?
+        public var layer: CAMetalLayer? { mtlLayer }
+        public var mtlLayer: CAMetalLayer?
 
         public static var sdlFlags: UInt32 = SDL_WINDOW_METAL.rawValue
 
@@ -37,7 +38,7 @@
             let mtlLayer = unsafeBitCast(SDL_Metal_GetLayer(mtlView), to: CAMetalLayer.self)
 
             self._window = window
-            self.layer = mtlLayer
+            self.mtlLayer = mtlLayer
             if let device = device {
                 mtlLayer.device = device
             }
@@ -54,7 +55,7 @@
         public func destroy() {
             SDL_Metal_DestroyView(mtlView)
             mtlView = nil
-            self.layer = nil
+            self.mtlLayer = nil
             self._window = nil
         }
 
