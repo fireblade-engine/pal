@@ -9,6 +9,8 @@
 
     @_implementationOnly import SDL2
 
+    extension SDL_KeyCode: Hashable { }
+
     extension KeyCode {
         public init?(scancode: UInt) {
             guard let keyCode = Self.physicalKeyMap[SDL_Scancode(rawValue: SDL_Scancode.RawValue(scancode))] else {

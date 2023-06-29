@@ -108,7 +108,7 @@ let package = Package(
     dependencies: [
         .package(name: "FirebladeMath", url: "https://github.com/fireblade-engine/math.git", from: "0.13.0"),
         .package(name: "FirebladeTime", url: "https://github.com/fireblade-engine/time.git", from: "0.2.0"),
-        .package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.3.2"),
+        .package(name: "SDL2", url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.4.1"),
         .package(name: "Vulkan", url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.1"),
         .package(name: "SwiftNFD", url: "https://github.com/ctreffs/SwiftNFD.git", from: "1.0.2"),
     ],
@@ -141,7 +141,7 @@ let package = Package(
 extension Target.Dependency {
     static let firebladeTime = byName(name: "FirebladeTime")
     static let firebladeMath = product(name: "FirebladeMath", package: "FirebladeMath")
-    static let sdl2 = product(name: "SDL2", package: "SDL2")
+    static let sdl2 = product(name: "SDL", package: "SDL2")
     static let vulkan = product(name: "Vulkan", package: "Vulkan")
     static let nfd = product(name: "NFD", package: "SwiftNFD")
 }
