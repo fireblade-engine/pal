@@ -41,21 +41,21 @@
         }
 
         extension CGRect {
-            init<V>(rect: Rect<V>) where V: BinaryFloatingPoint {
+            init(rect: Rect<some BinaryFloatingPoint>) {
                 self.init(origin: CGPoint(point: rect.origin),
                           size: CGSize(size: rect.size))
             }
         }
 
         extension CGSize {
-            init<V>(size: Size<V>) where V: BinaryFloatingPoint {
+            init(size: Size<some BinaryFloatingPoint>) {
                 self.init(width: CGFloat(size.width),
                           height: CGFloat(size.height))
             }
         }
 
         extension CGPoint {
-            init<V>(point: Point<V>) where V: BinaryFloatingPoint {
+            init(point: Point<some BinaryFloatingPoint>) {
                 self.init(x: CGFloat(point.x),
                           y: CGFloat(point.y))
             }

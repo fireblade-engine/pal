@@ -74,7 +74,7 @@
             }
 
             private var displayMode: CGDisplayMode? {
-                guard let displayID = displayID else {
+                guard let displayID else {
                     return nil
                 }
 
@@ -92,7 +92,7 @@
 
         var refreshRate: Int? {
             #if FRB_PLATFORM_APPL_MACOS && !targetEnvironment(macCatalyst)
-                guard let displayMode = displayMode else {
+                guard let displayMode else {
                     return nil
                 }
                 return Int(displayMode.refreshRate.rounded(.toNearestOrEven))

@@ -39,7 +39,7 @@
 
             self._window = window
             self.mtlLayer = mtlLayer
-            if let device = device {
+            if let device {
                 mtlLayer.device = device
             }
         }

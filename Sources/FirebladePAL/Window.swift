@@ -22,7 +22,7 @@ public protocol WindowBase: AnyObject {
     ///   - properties: Window properties.
     ///   - surface: Window surface constructor to be used.
     ///              Surface type not be changed after window creation.
-    init<Surface>(properties: WindowProperties, surface surfaceConstructor: @escaping SurfaceConstructor<Surface>) throws
+    init(properties: WindowProperties, surface surfaceConstructor: @escaping SurfaceConstructor<some Any>) throws
 
     /// Creates a window using given properties and prepares
     /// the window for deferred surface creation using given surface type.
