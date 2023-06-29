@@ -2,14 +2,12 @@
 // SDLKeys.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL
 
-    @_implementationOnly import SDL2
-
-    extension SDL_KeyCode: Hashable { }
+    @_implementationOnly import SDL
 
     extension KeyCode {
         public init?(scancode: UInt) {

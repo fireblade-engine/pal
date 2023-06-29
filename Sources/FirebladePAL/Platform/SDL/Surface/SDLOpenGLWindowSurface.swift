@@ -2,13 +2,13 @@
 // SDLOpenGLWindowSurface.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_OPENGL
 
     import FirebladeMath
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     public final class SDLOpenGLWindowSurface: SDLWindowSurface, OpenGLSurface {
         private weak var window: SDLWindow?

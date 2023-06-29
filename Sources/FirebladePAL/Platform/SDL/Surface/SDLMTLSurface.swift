@@ -2,7 +2,7 @@
 // SDLMTLSurface.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_METAL
@@ -10,7 +10,7 @@
     import func Metal.MTLCreateSystemDefaultDevice
     import protocol Metal.MTLDevice
     import class QuartzCore.CAMetalLayer
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     import FirebladeMath
 
