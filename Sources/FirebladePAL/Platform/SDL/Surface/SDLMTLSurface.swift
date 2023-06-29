@@ -2,7 +2,7 @@
 // SDLMTLSurface.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_METAL
@@ -10,20 +10,17 @@
     import func Metal.MTLCreateSystemDefaultDevice
     import protocol Metal.MTLDevice
     import class QuartzCore.CAMetalLayer
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
 
     import FirebladeMath
 
     open class SDLMTLWindowSurface: SDLWindowSurface, MTLWindowSurfaceBase {
         private weak var _window: SDLWindow?
 
-        #if swift(<5.4) // <https://bugs.swift.org/browse/SR-11910>
-            private var mtlView: UnsafeMutableRawPointer!
-        #else
-            private var mtlView: SDL_MetalView!
-        #endif
+        private var mtlView: SDL_MetalView!
 
-        public var layer: CAMetalLayer?
+        public var layer: CAMetalLayer? { mtlLayer }
+        public var mtlLayer: CAMetalLayer?
 
         public static var sdlFlags: UInt32 = SDL_WINDOW_METAL.rawValue
 
@@ -41,7 +38,7 @@
             let mtlLayer = unsafeBitCast(SDL_Metal_GetLayer(mtlView), to: CAMetalLayer.self)
 
             self._window = window
-            self.layer = mtlLayer
+            self.mtlLayer = mtlLayer
             if let device = device {
                 mtlLayer.device = device
             }
@@ -58,7 +55,7 @@
         public func destroy() {
             SDL_Metal_DestroyView(mtlView)
             mtlView = nil
-            self.layer = nil
+            self.mtlLayer = nil
             self._window = nil
         }
 

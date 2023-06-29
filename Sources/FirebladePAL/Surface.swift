@@ -2,7 +2,7 @@
 // Surface.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 import FirebladeMath
@@ -35,7 +35,10 @@ public protocol WindowSurfaceBase: Surface {
     import class QuartzCore.CAMetalLayer
 
     public protocol MTLSurface: Surface {
+        @available(*, deprecated, renamed: "mtlLayer")
         var layer: CAMetalLayer? { get }
+
+        var mtlLayer: CAMetalLayer? { get }
     }
 
     public protocol MTLWindowSurfaceBase: WindowSurfaceBase, MTLSurface {

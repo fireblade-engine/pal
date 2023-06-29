@@ -2,7 +2,7 @@
 // SDLVLKWindowSurface.swift
 // Fireblade PAL
 //
-// Copyright © 2018-2021 Fireblade Team. All rights reserved.
+// Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_VULKAN
@@ -11,7 +11,7 @@
     import Vulkan
 
     // keep this implementation only since we do NOT want to leak SDL implementation details out if the HID package
-    @_implementationOnly import SDL2
+    @_implementationOnly import SDL
     import Vulkan
 
     open class SDLVLKWindowSurface: SDLWindowSurface, VLKWindowSurfaceBase {
