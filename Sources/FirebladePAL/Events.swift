@@ -166,11 +166,44 @@ public struct WindowEvent {
 
 public extension WindowEvent {
     enum Event {
-        /// The window manager requested that the window be closed.
-        case closeRequested
+        /// Window has been shown
+        case shown
+
+        /// Window has been hidden
+        case hidden
+
+        /// Window needs redraw
+        case needsRedraw
+
+        /// Window has been moved to given position.
+        case movedTo(position: Point<Int>)
+
+        case sizeChangedTo(size: Size<Int>)
 
         /// Window has been resized to given size.
         case resizedTo(size: Size<Int>)
+
+        /// Window has been minimized
+        case minimized
+
+        /// Window has been maximized
+        case maximized
+
+        /// Window has been restored to normal size and position
+        case restored
+
+        case pointerFocusGained
+        case pointerFocusLost
+
+        case keyboardFocusGained
+        case keyboardFocusLost
+
+        /// The window manager requested that the window be closed.
+        case closeRequested
+
+        case takeInputFocus
+
+        case screenChangedTo(screen: Screen)
     }
 }
 
