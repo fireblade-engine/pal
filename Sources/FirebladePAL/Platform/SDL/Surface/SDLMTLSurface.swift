@@ -18,23 +18,15 @@
         private weak var _window: SDLWindow?
 
         private var mtlView: SDL_MetalView!
+
+        public var layer: CAMetalLayer? { mtlLayer }
         public var mtlLayer: CAMetalLayer?
 
         public static var sdlFlags: UInt32 = SDL_WINDOW_METAL.rawValue
 
         public var enableVsync: Bool {
-            get {
-                #if os(macOS)
-                    mtlLayer?.displaySyncEnabled ?? false
-                #else
-                    false
-                #endif
-            }
-            set {
-                #if os(macOS)
-                    mtlLayer?.displaySyncEnabled = newValue
-                #endif
-            }
+            get { layer?.displaySyncEnabled ?? false }
+            set { layer?.displaySyncEnabled = newValue }
         }
 
         public required init(in window: SDLWindow, device: MTLDevice?) throws {
@@ -47,7 +39,7 @@
 
             self._window = window
             self.mtlLayer = mtlLayer
-            if let device {
+            if let device = device {
                 mtlLayer.device = device
             }
         }

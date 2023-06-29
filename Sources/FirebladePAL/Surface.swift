@@ -11,10 +11,6 @@ import FirebladeMath
     public typealias WindowSurface = SDLWindowSurface
 #endif
 
-#if FRB_PLATFORM_APPL
-    public typealias WindowSurface = APPLWindowSurface
-#endif
-
 public protocol Surface: AnyObject {
     func destroy()
 
@@ -39,6 +35,9 @@ public protocol WindowSurfaceBase: Surface {
     import class QuartzCore.CAMetalLayer
 
     public protocol MTLSurface: Surface {
+        @available(*, deprecated, renamed: "mtlLayer")
+        var layer: CAMetalLayer? { get }
+
         var mtlLayer: CAMetalLayer? { get }
     }
 
@@ -50,7 +49,7 @@ public protocol WindowSurfaceBase: Surface {
 
 // MARK: - Vulkan Surface
 
-#if canImport(Vulkan)
+#if FRB_GRAPHICS_VULKAN
 
     import Vulkan
 

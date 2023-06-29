@@ -1,41 +1,52 @@
 {
-  "pins" : [
-    {
-      "identity" : "math",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/fireblade-engine/math.git",
-      "state" : {
-        "revision" : "d42d22cb727931cc17c15ba424b1eae5fde4dd96",
-        "version" : "0.13.0"
+  "object": {
+    "pins": [
+      {
+        "package": "FirebladeMath",
+        "repositoryURL": "https://github.com/fireblade-engine/math.git",
+        "state": {
+          "branch": null,
+          "revision": "d42d22cb727931cc17c15ba424b1eae5fde4dd96",
+          "version": "0.13.0"
+        }
+      },
+      {
+        "package": "SwiftNFD",
+        "repositoryURL": "https://github.com/ctreffs/SwiftNFD.git",
+        "state": {
+          "branch": null,
+          "revision": "6c9e4666649f70920775e25d187d5a2c05df5fd2",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "SDL",
+        "repositoryURL": "https://github.com/ctreffs/SwiftSDL2.git",
+        "state": {
+          "branch": null,
+          "revision": "30a2886bd68e43fc19ba29b63ffe230ac0e4db7a",
+          "version": "1.4.1"
+        }
+      },
+      {
+        "package": "Vulkan",
+        "repositoryURL": "https://github.com/ctreffs/SwiftVulkan",
+        "state": {
+          "branch": null,
+          "revision": "54af73ca33e493ccfadf02e6f00281be07b8a850",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "FirebladeTime",
+        "repositoryURL": "https://github.com/fireblade-engine/time.git",
+        "state": {
+          "branch": null,
+          "revision": "529c0e27108f2b22d864f61ff3e789dd938ee16c",
+          "version": "0.2.0"
+        }
       }
-    },
-    {
-      "identity" : "swiftnfd",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ctreffs/SwiftNFD.git",
-      "state" : {
-        "revision" : "6c9e4666649f70920775e25d187d5a2c05df5fd2",
-        "version" : "1.0.2"
-      }
-    },
-    {
-      "identity" : "swiftsdl2",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ctreffs/SwiftSDL2.git",
-      "state" : {
-        "revision" : "2675295ab1daf1226c2cc6e470db4b3b4e696358",
-        "version" : "1.4.0"
-      }
-    },
-    {
-      "identity" : "time",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/fireblade-engine/time.git",
-      "state" : {
-        "revision" : "529c0e27108f2b22d864f61ff3e789dd938ee16c",
-        "version" : "0.2.0"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }
