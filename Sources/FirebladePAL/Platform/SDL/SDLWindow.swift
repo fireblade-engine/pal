@@ -113,7 +113,7 @@
         }
 
         public var screen: Screen? {
-            return SDLScreen(displayIndex: SDL_GetWindowDisplayIndex(_window))
+            SDLScreen(displayIndex: SDL_GetWindowDisplayIndex(_window))
         }
 
         public func close() {
