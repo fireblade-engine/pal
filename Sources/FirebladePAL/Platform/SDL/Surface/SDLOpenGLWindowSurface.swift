@@ -39,7 +39,7 @@
         }
 
         public func getDrawableSize() -> Size<Int> {
-            guard let window = window else {
+            guard let window else {
                 return Size(0, 0)
             }
 
@@ -50,7 +50,7 @@
         }
 
         public func swap() {
-            guard let window = window else {
+            guard let window else {
                 return
             }
             SDL_GL_SwapWindow(window._window)

@@ -126,9 +126,9 @@
 
     // MARK: - C Helper
 
-    fileprivate extension Array where Element == String {
-        init<I: FixedWidthInteger>(unsafeUninitializedCapacity count: I,
-                                   initializingWith closure: (_ buffer: UnsafeMutablePointer<UnsafePointer<CChar>?>, _ written: inout Int) throws -> Void) rethrows
+    fileprivate extension [String] {
+        init(unsafeUninitializedCapacity count: some FixedWidthInteger,
+             initializingWith closure: (_ buffer: UnsafeMutablePointer<UnsafePointer<CChar>?>, _ written: inout Int) throws -> Void) rethrows
         {
             let buffer = UnsafeMutablePointer<UnsafePointer<CChar>?>.allocate(capacity: Int(count))
             defer {
