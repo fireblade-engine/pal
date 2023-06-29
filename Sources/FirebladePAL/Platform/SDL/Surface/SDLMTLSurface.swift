@@ -17,11 +17,7 @@
     open class SDLMTLWindowSurface: SDLWindowSurface, MTLWindowSurfaceBase {
         private weak var _window: SDLWindow?
 
-        #if swift(<5.4) // <https://bugs.swift.org/browse/SR-11910>
-            private var mtlView: UnsafeMutableRawPointer!
-        #else
-            private var mtlView: SDL_MetalView!
-        #endif
+        private var mtlView: SDL_MetalView!
 
         public var layer: CAMetalLayer?
 
