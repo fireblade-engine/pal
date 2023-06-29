@@ -18,12 +18,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### 💻 Installing
 
-Fireblade PAL is available for all platforms that support [Swift 5.3](https://swift.org/) and higher and the [Swift Package Manager (SPM)](https://github.com/apple/swift-package-manager).
+Fireblade PAL is available for all platforms that support [Swift 5.7](https://swift.org/) and higher and the [Swift Package Manager (SPM)](https://github.com/apple/swift-package-manager).
 
 Extend the following lines in your `Package.swift` file or use it to create a new project.
 
 ```swift
-// swift-tools-version:5.3
+// swift-tools-version:5.7
 
 import PackageDescription
 
