@@ -122,9 +122,14 @@
         }
 
         public var sizeInPixels: Size<Int> {
+            #if os(macOS) || os(iOS) || os(tvOS)
             var w: Int32 = 0, h: Int32 = 0
             SDL_GetWindowSizeInPixels(_window, &w, &h)
             return Size(width: Int(w), height: Int(h))
+            #else
+            #warning("Requires SDL 2.26.0 - falling back to `size`.")
+            return size
+            #endif
         }
 
         public var fullscreen: Bool {
