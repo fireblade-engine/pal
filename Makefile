@@ -1,4 +1,5 @@
 SWIFT_PACKAGE_VERSION := $(shell swift package tools-version)
+SOURCES_DIR="${PWD}/Sources"
 
 # Delete package build artifacts.
 .PHONY: clean
@@ -7,9 +8,14 @@ clean:
 
 # Lint fix and format code.
 .PHONY: lint-fix
-lint-fix:
+lint-fix: format-headers
 	mint run swiftlint --fix --quiet
 	mint run swiftformat --quiet --swiftversion ${SWIFT_PACKAGE_VERSION} .
+
+.PHONY: format-headers
+format-headers:
+	# Format header
+	mint run swiftformat ${SOURCES_DIR} --exclude **/*.generated.swift --header "\n{file}\nFireblade PAL\n\nCopyright © 2018-{year} Fireblade Team. All rights reserved.\nLicensed under MIT License. See LICENSE file for details." --swiftversion ${SWIFT_PACKAGE_VERSION}
 
 .PHONY: pre-push
 pre-push: genLinuxTests update-fileheaders lint-fix

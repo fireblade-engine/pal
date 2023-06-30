@@ -91,15 +91,45 @@
 
         public var frame: Rect<Int> {
             get {
-                var x: Int32 = 0, y: Int32 = 0, w: Int32 = 0, h: Int32 = 0
-                SDL_GetWindowPosition(_window, &x, &y)
-                SDL_GetWindowSize(_window, &w, &h)
-                return Rect(Int(x), Int(y), Int(w), Int(h))
+                Rect(origin: position, size: size)
             }
             set {
-                SDL_SetWindowPosition(_window, Int32(newValue.origin.x), Int32(newValue.origin.y))
-                SDL_SetWindowSize(_window, Int32(newValue.size.width), Int32(newValue.size.height))
+                position = newValue.origin
+                size = newValue.size
             }
+        }
+
+        public var position: Point<Int> {
+            get {
+                var x: Int32 = 0, y: Int32 = 0
+                SDL_GetWindowPosition(_window, &x, &y)
+                return Point(x: Int(x), y: Int(y))
+            }
+            set {
+                SDL_SetWindowPosition(_window, Int32(newValue.x), Int32(newValue.y))
+            }
+        }
+
+        public var size: Size<Int> {
+            get {
+                var w: Int32 = 0, h: Int32 = 0
+                SDL_GetWindowSize(_window, &w, &h)
+                return Size(width: Int(w), height: Int(h))
+            }
+            set {
+                SDL_SetWindowSize(_window, Int32(newValue.width), Int32(newValue.height))
+            }
+        }
+
+        public var sizeInPixels: Size<Int> {
+            #if os(macOS) || os(iOS) || os(tvOS)
+            var w: Int32 = 0, h: Int32 = 0
+            SDL_GetWindowSizeInPixels(_window, &w, &h)
+            return Size(width: Int(w), height: Int(h))
+            #else
+            #warning("Requires SDL 2.26.0 - falling back to `size`.")
+            return size
+            #endif
         }
 
         public var fullscreen: Bool {
