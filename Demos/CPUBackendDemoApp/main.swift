@@ -1,10 +1,3 @@
-//
-// main.swift
-// Fireblade PAL
-//
-// Copyright © 2018-2023 Fireblade Team. All rights reserved.
-// Licensed under MIT License. See LICENSE file for details.
-
 import FirebladePAL
 
 Platform.initialize()

@@ -10,8 +10,6 @@
     @_implementationOnly import SDL
 
     public struct SDLClipboard: Clipboard {
-        init() {}
-
         public func getText() throws -> String {
             guard let pText = SDL_GetClipboardText() else {
                 throw SDLError()
