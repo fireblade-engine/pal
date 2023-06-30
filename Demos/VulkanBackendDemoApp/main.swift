@@ -1,7 +1,6 @@
 #if FRB_GRAPHICS_VULKAN
 
     import FirebladePAL
-    import Vulkan
 
     Platform.initialize()
     print("Platform version: \(Platform.version)")
