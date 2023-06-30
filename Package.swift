@@ -127,6 +127,12 @@ let package = Package(
             path: "Demos/VulkanBackendDemoApp",
             swiftSettings: swiftSettings
         ),
+        .executableTarget(
+            name: "MetalBackendDemoApp",
+            dependencies: ["FirebladePAL"],
+            path: "Demos/MetalBackendDemoApp",
+            swiftSettings: swiftSettings
+        ),
         .testTarget(name: "FirebladePALTests",
                     dependencies: ["FirebladePAL"]),
     ]
