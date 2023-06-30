@@ -1,20 +1,21 @@
-#if FRB_GRAPHICS_VULKAN
+#if FRB_GRAPHICS_METAL
 
     import FirebladePAL
-    import Vulkan
+    import Metal
 
     Platform.initialize()
     print("Platform version: \(Platform.version)")
 
-    func makeVLKSurface(in window: Window) throws -> VLKWindowSurface {
-        let vulkanInstance = try VLKWindowSurface.createInstance()
-        return try VLKWindowSurface(in: window, instance: vulkanInstance)
+    func makeMTLSurface(in window: Window) throws -> MTLWindowSurface {
+        let surface = try MTLWindowSurface(in: window, device: MTLCreateSystemDefaultDevice())
+        surface.mtlLayer?.backgroundColor = .init(red: 1.0, green: 0.0, blue: 1.0, alpha: 1.0)
+        return surface
     }
 
-    let props = WindowProperties(title: "Vulkan Window", frame: .init(0, 0, 800, 600))
+    let props = WindowProperties(title: "Metal Window", frame: .init(0, 0, 800, 600))
 
     let window = try Window(properties: props,
-                            surface: makeVLKSurface)
+                            surface: makeMTLSurface)
 
     var event = Event()
     var quit = false
