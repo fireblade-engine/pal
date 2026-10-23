@@ -64,7 +64,7 @@ let renderingAPIDefines: [SwiftSetting] = {
     // FRB_GRAPHICS_VULKAN
     let isVulkanDefaultEnabled: Bool
     #if os(Linux) || os(macOS)
-        isVulkanDefaultEnabled = true
+        isVulkanDefaultEnabled = false
     #else
         isVulkanDefaultEnabled = false
     #endif
@@ -101,7 +101,7 @@ let package = Package(
         .package(url: "https://github.com/fireblade-engine/math.git", from: "0.13.0"),
         .package(url: "https://github.com/fireblade-engine/time.git", from: "0.2.0"),
         .package(url: "https://github.com/ctreffs/SwiftSDL2.git", from: "1.4.1"),
-        .package(url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.1"),
+        // .package(url: "https://github.com/ctreffs/SwiftVulkan", from: "0.2.1"),
         .package(url: "https://github.com/ctreffs/SwiftNFD.git", from: "1.0.2"),
     ],
     targets: [
@@ -111,7 +111,7 @@ let package = Package(
                 .product(name: "FirebladeMath", package: "math"),
                 .product(name: "FirebladeTime", package: "time"),
                 .product(name: "SDL", package: "SwiftSDL2"),
-                .product(name: "Vulkan", package: "SwiftVulkan"),
+                // .product(name: "Vulkan", package: "SwiftVulkan"),
                 .product(name: "NFD", package: "SwiftNFD"),
             ],
             swiftSettings: swiftSettings
@@ -121,12 +121,12 @@ let package = Package(
             dependencies: ["FirebladePAL"],
             path: "Demos/CPUBackendDemoApp"
         ),
-        .executableTarget(
+        /*.executableTarget(
             name: "VulkanBackendDemoApp",
             dependencies: ["FirebladePAL", .product(name: "Vulkan", package: "SwiftVulkan")],
             path: "Demos/VulkanBackendDemoApp",
             swiftSettings: swiftSettings
-        ),
+        ),*/
         .executableTarget(
             name: "MetalBackendDemoApp",
             dependencies: ["FirebladePAL"],

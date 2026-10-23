@@ -5,6 +5,7 @@
 // Copyright © 2018-2023 Fireblade Team. All rights reserved.
 // Licensed under MIT License. See LICENSE file for details.
 
+/*
 #if FRB_PLATFORM_SDL && FRB_GRAPHICS_VULKAN
 
     import FirebladeMath
@@ -179,3 +180,4 @@
     }
 
 #endif
+*/
